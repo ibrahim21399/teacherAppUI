@@ -32,11 +32,11 @@ logout(){
 }
 //  speakrOwnProfInof (){
 //   return this.http.get<Speaker>(this.url+"Speaker/getownprofile")
-  
+
 //  }
 
 //  speakrOwnProfEdit (speaker:Speaker){
 //   return this.http.post(this.url+"Speaker/editownprofile",speaker)
-  
+
 //  }
 }
