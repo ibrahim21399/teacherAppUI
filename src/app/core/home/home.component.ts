@@ -5,6 +5,7 @@ import { Student } from 'src/app/Model/Student';
 import { Teacher } from 'src/app/Model/Teacher';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
+import { TeachersService } from 'src/app/services/teachers.service';
 
 @Component({
   selector: 'app-home',
@@ -13,16 +14,16 @@ import * as L from 'leaflet';
 
 })
 export class HomeComponent implements OnInit {
-  public highestRatedTeachers!: any[];
+  highestRatedTeachers: Teacher[] = [];
   private userLatitude: number= 0 ;
   private userLongitude: number = 0 ;
 
 
-  constructor(public auth:AuthService, private http: HttpClient) { }
+  constructor(public auth:AuthService, private http: HttpClient, private teacherService:TeachersService) { }
 
   ngOnInit() {
     this.getUserLocation();
-    this.fetchHighestRatedTeachers();
+    this.getTeachersNearStudentWithHighstRate();
   }
 
   getUserLocation() {
@@ -57,15 +58,16 @@ export class HomeComponent implements OnInit {
   }
 
 
-  fetchHighestRatedTeachers() {
-    this.http.get<any[]>('your-api-url/teachers/highest-rated')
-      .subscribe(
-        (teachers) => {
-          this.highestRatedTeachers = teachers;
-        },
-        (error) => {
-          console.error('Error fetching highest-rated teachers:', error);
-        }
-      );
+  getTeachersNearStudentWithHighstRate() {
+    this.teacherService.getTeachersWithHighestRate()
+      .subscribe(response => {
+      if (response) {
+        this.highestRatedTeachers = response;
+
+      }
+    }, error => {
+      console.log(error);
+
+    });
   }
 }

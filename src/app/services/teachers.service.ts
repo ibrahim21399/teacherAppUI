@@ -9,11 +9,16 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class TeachersService {
-
+  teacherParams = new TeacherParams();
+  sortOptions = [
+    {name : 'Alphabetical', value : 'name'},
+    {name : 'Price: Low To High', value : 'priceAsc'},
+    {name : 'Price: High To Low', value : 'priceDesc'}, //value spelling is important because api is accept parameters spelled like this
+  ]
   baseUrl = 'https://localhost:8080/api/';
   constructor(private http:HttpClient) { }
 
-  getProducts(teacherParams :TeacherParams) {
+  getTeachers(teacherParams :TeacherParams) {
 
     let params = new HttpParams();
 
@@ -51,8 +56,12 @@ export class TeachersService {
   }
 
 
-  getProduct(id: number) {
-    return this.http.get<Teacher>(this.baseUrl + 'products/' + id);
+  getTeacher(id: number) {
+    return this.http.get<Teacher>(this.baseUrl + 'teachers/' + id);
+  }
+
+  getTeachersWithHighestRate() {
+    return this.http.get<Teacher[]>(this.baseUrl + 'teachersWithHighestRate/');
   }
   // getFields() {
   //   // return  the body of the response
