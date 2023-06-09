@@ -11,6 +11,7 @@ import { RegisterComponent } from './teacherRegister/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { StudentRegisterComponent } from './student-register/student-register.component';
+import { FieldComponent } from './field/field.component';
 
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
@@ -28,7 +29,8 @@ import { StudentRegisterComponent } from './student-register/student-register.co
     RegisterComponent,
     FooterComponent,
     ErrorComponent,
-    StudentRegisterComponent
+    StudentRegisterComponent,
+    FieldComponent
   ],
   imports: [
     CommonModule,
