@@ -9,6 +9,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 username:string = "";
 password:string = "";
+message = "";
+pass = "password";
+fa = "fa-eye";
+
   constructor(private auth:AuthService, ) { }
 
   ngOnInit(): void {

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
 
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     LoginComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
