@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.getUserLocation();
     // this.getTeachers();
     this.getActivatedTeachers();
-    // this.getTeachersNearStudentWithHighstRate();
+     this.getTeachersWithHighstRate();
   }
 
   getUserLocation() {
@@ -104,18 +104,55 @@ export class HomeComponent implements OnInit {
       ];
       }
 
-  // getTeachersNearStudentWithHighstRate() {
-  //   this.teacherService.getTeachersWithHighestRate()
-  //     .subscribe(response => {
-  //     if (response) {
-  //       this.highestRatedTeachers = response;
+  getTeachersWithHighstRate() {
+    // this.teacherService.getTeachersWithHighestRate()
+    //   .subscribe(response => {
+    //   if (response) {
+    //     this.highestRatedTeachers = response.data;
 
-  //     }
-  //   }, error => {
-  //     console.log(error);
+    //   }
+    // }, error => {
+    //   console.log(error);
 
-  //   });
-  // }
+    // });
+
+    this.highestRatedTeachers = [
+      {
+        _id: '1',
+        name: 'John Doe',
+        email: 'john@example.com',
+        password: 'password',
+        phone: '1234567890',
+        pricePerHour: 20,
+        experience: 5,
+        Latitude: 51.5074,
+        Longitude: -0.1278,
+        FieldId: '1',
+
+        rating: 4.5,
+        registerationDate: new Date(),
+        Active: true,
+        AcceptanceDate: new Date()
+      },
+      {
+        _id: '2',
+        name: 'Jane Smith',
+        email: 'jane@example.com',
+        password: 'password',
+        phone: '0987654321',
+        pricePerHour: 25,
+        experience: 3,
+        Latitude: 51.5072,
+        Longitude: -0.1279,
+        FieldId: '2',
+
+        rating: 4.2,
+        registerationDate: new Date(),
+        Active: true,
+        AcceptanceDate: new Date()
+      }
+      ];
+  }
 
   getActivatedTeachers() {
     this.teacherService.GetActiveTeachers()

@@ -12,6 +12,7 @@ const Url=environment.apiUrl
 })
 export class TeacherService {
   private _Teachers=`${Url}teachers/`;
+  private _HighstRate=`${Url}highrateteachers/`;
   private _apiGetAllNotAcceptedTeachers=`${Url}teachers/notactive`;
   private _apiChangeStatusTeacher=`${Url}teachers/changestatus`;
 
@@ -24,6 +25,9 @@ export class TeacherService {
   }
   GetActiveTeachers():Observable<ServiceResponse<Teacher[]>>{
     return this._httpClient.get<ServiceResponse<Teacher[]>>(`${this._Teachers}`)
+  }
+  getTeachersWithHighestRate() {
+    return this._httpClient.get<ServiceResponse<Teacher[]>>(`${this._HighstRate}`)
   }
   GetNotAceptedTeachers():Observable<ServiceResponse<Teacher[]>>{
     return this._httpClient.get<ServiceResponse<Teacher[]>>(`${this._apiGetAllNotAcceptedTeachers}`)
