@@ -4,4 +4,6 @@ export interface Student {
     email:string;
     password:string;
     registerationDate: Date;
+    Active:boolean;
+
 }
