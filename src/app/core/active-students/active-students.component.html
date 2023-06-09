@@ -1,0 +1,24 @@
+<p>active-students works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Registration Date</th>
+      <th>Active</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.registerationDate | date }}</td>
+      <td>{{ student.Active ? 'Yes' : 'No' }}</td>
+      <td>
+        <button class="btn btn-danger" >Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+//(click)="delete(student)"

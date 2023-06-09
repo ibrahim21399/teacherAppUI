@@ -5,5 +5,4 @@ export interface Student {
     password:string;
     registerationDate: Date;
     Active:boolean;
-
 }
