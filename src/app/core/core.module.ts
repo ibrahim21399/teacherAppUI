@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
 
@@ -21,7 +22,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,9 @@ import { RegisterComponent } from './register/register.component';
   ],
   exports:[
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent
   ],
   providers:[]
   
