@@ -1,0 +1,19 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/img/st.jpg" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form id="login">
+        <input [(ngModel)]="username" type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+        <input [(ngModel)]="password"  type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input (click)="login()" type="button"  class="fadeIn fourth " value="Log In">
+      </form>
+     
+
+    </div>
+  </div>    
