@@ -30,13 +30,13 @@ export class FieldService {
     return this.http.post<Field>(this._fields, field);
   }
 
-  updateField(id: string, field: Field): Observable<Field> {
-    const url = `${this._fields}/${id}`;
-    return this.http.put<Field>(url, field);
+  updateField(field: Field): Observable<Field> {
+    return this.http.put<Field>(`${this._fields}/${field._id}`, field);
   }
 
   deleteField(id: string): Observable<Field> {
-    const url = `${this._fields}/${id}`;
-    return this.http.delete<Field>(url);
+    return this.http.delete<Field>(`${this._fields}/${id}`);
   }
+
+
 }

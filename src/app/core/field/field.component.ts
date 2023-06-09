@@ -9,57 +9,48 @@ import { FieldService } from 'src/app/services/field.service';
 })
 export class FieldComponent implements OnInit {
 
-  fields: Field[] =[];
-  selectedField: Field|any ;
-  addingField = false;
-
+  fields: Field[]=[];
+  selectedField: Field|any;
   constructor(private fieldService: FieldService) { }
 
-  ngOnInit() {
-   this.getFields();
+  ngOnInit(): void {
+    this.getFields();
   }
 
   getFields(): void {
-    this.fieldService.getFields().subscribe(fields => {
-console.log(fields)  
-this.fields=fields 
-console.log(this.fields)  
-   });
+    this.fieldService.getFields()
+      .subscribe(fields => {
+        this.fields = Object.values(fields);
+       console.log(this.fields);}
+        );
   }
-  
+
   onSelect(field: Field): void {
     this.selectedField = field;
   }
 
-  addField(): void {
-    this.addingField = true;
-    this.selectedField = null;
-  }
-
-  saveField(field: Field): void {
-    if (field._id) {
-      this.fieldService.updateField(field._id, field)
-        .subscribe(() => this.getFields());
-    } else {
-      this.fieldService.addField(field)
-        .subscribe(() => this.getFields());
-    }
-    this.cancel();
-  }
-
-  deleteField(field: Field): void {
-    this.fieldService.deleteField(field._id)
-      .subscribe(() => {
-        this.fields = this.fields.filter( f => f !== field);
-        if (this.selectedField === field) {
-          this.selectedField = null;
-        }
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.fieldService.addField({ name } as Field)
+      .subscribe(field => {
+        this.fields.push(field);
       });
   }
 
-  cancel(): void {
-    this.addingField = false;
-    this.selectedField = null;
+  update(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    const field = { ...this.selectedField, name };
+    this.fieldService.updateField(field)
+      .subscribe(() => {
+        this.getFields();
+      });
+  }
+
+  delete(field: Field): void {
+    this.fields = this.fields.filter(f => f !== field);
+    this.fieldService.deleteField(field._id).subscribe();
   }
 
 }
