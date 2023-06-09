@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import ".././node_modules/bootstrap/dist/css/bootstrap.css";
 @import ".././node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import '~leaflet/dist/leaflet.css';
 
 :root {
   --bs-blue: #0d6efd;
@@ -10816,4 +10817,3 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-
