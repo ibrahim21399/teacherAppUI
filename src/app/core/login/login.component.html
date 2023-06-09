@@ -24,11 +24,6 @@
 
                         </div>
                         <div *ngIf="message != ''"><span class="text-danger">{{message}}</span></div>
-                        <div class="form-group d-md-flex">
-                            <div class="w-100 text-md-right">
-                                <a href="#">Forgot Password?</a>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn form-control btn-primary rounded submit px-3"
                                 (click)="login()">Log In</button>
@@ -36,7 +31,9 @@
                     </form>
                     <div class="w-100 text-center mt-4 text">
                         <p class="mb-0">Don't have an account?</p>
-                        <a [routerLink]="'/register'">Sign Up</a>
+                        <a [routerLink]="'/StudentRegister'">Sign Up as Student</a><br>
+                        <a [routerLink]="'/TeacherRegister'">Sign Up as Teacher</a>
+
                     </div>
                 </div>
             </div>

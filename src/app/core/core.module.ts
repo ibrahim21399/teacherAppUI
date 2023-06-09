@@ -7,9 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './teacherRegister/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
+import { StudentRegisterComponent } from './student-register/student-register.component';
 
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
@@ -26,7 +27,8 @@ import { ErrorComponent } from './error/error.component';
     HomeComponent,
     RegisterComponent,
     FooterComponent,
-    ErrorComponent
+    ErrorComponent,
+    StudentRegisterComponent
   ],
   imports: [
     CommonModule,

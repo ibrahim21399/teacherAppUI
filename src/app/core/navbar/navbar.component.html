@@ -19,8 +19,14 @@
                   </ul>
                   <form class="d-flex">
                     <ul class="nav navbar-nav navbar-right">
-                      <li class="nav-item">
-                        <a class="nav-link"  routerLink="/register"><span class="glyphicon glyphicon-user"></span>Register</a>
+                      <li class="nav-item dropdown" *ngIf="!this.login.isloggedin;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Register
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item"  routerLink="/StudentRegister">Student</a>
+                          <a class="dropdown-item" routerLink="/TeacherRegister">Teacher</a>
+                        </div>
                       </li>
                       <li class="nav-item" *ngIf="!this.login.isloggedin;else logoutbutton ">
                         <a class="nav-link"  routerLink="/login"><span class="glyphicon glyphicon-user"></span>Login</a>

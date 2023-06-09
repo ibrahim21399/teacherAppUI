@@ -1,6 +1,8 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { SweetalertService } from './general/sweetalert.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +13,21 @@ export class AuthService {
   email = "";
   url = "http://localhost:8080/api/";
 
-  constructor(private http: HttpClient,private router:Router) {
+  constructor(private http: HttpClient,private router:Router,private _sweetalertService: SweetalertService,
+    ) {
 
    }
 
   Login(email: string, password: string) {
-    console.log(email);
-    this.http.post<any>(this.url + "login", { email: email, password: password }).subscribe(res => {
+    this.http.post<any>(this.url + "login", { email: email, password: password }).subscribe( res => {
+      console.log(res);
       localStorage.setItem("jwt_token", res.token)
       this.email = email
       this.isloggedin = true;
       this.router.navigateByUrl("/")
       this.role= res.role;
+    },error => {
+      this._sweetalertService.RunAlert(error.error.message,false);
     })
   }
 logout(){

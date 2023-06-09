@@ -1,0 +1,114 @@
+<!-- Sign up Section Start -->
+<div class="signup-section ptb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+          <form class="signup-form"  [formGroup]="signupForm"  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>Enter Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Your Full Name"
+                formControlName="name"
+              />
+  
+            </div>
+            <div class="form-group">
+              <label>Enter Email</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter Your Email"
+                formControlName="email"
+                [ngClass]="{
+                  'valid' :signupForm.get('email')?.touched && signupForm.get('email')?.valid,
+                  'invalid' : form['email'].touched &&form['email'].invalid}"
+              />
+              <small class="text-danger mt-3" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                email is required
+                </small>
+  
+            </div>
+            <div class="form-group">
+              <label>Enter phone number</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter phone number"
+                formControlName="phoneNumber"
+                [ngClass]="{
+                  'valid' :signupForm.get('phoneNumber')?.touched && signupForm.get('phoneNumber')?.valid,
+                  'invalid' : form['phoneNumber'].touched &&form['phoneNumber'].invalid}"
+              />
+              <small class="text-danger mt-3" *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched">
+                Phone Number is Required
+              </small>
+  
+            </div>
+            <div class="form-group">
+                <label>Enter price/hour</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Enter price/hour"
+                  formControlName="pricePerHour"
+                  [ngClass]="{
+                    'valid' :signupForm.get('pricePerHour')?.touched && signupForm.get('pricePerHour')?.valid,
+                    'invalid' : form['pricePerHour'].touched &&form['pricePerHour'].invalid}"
+                />
+                <small class="text-danger mt-3" *ngIf="signupForm.get('pricePerHour')?.invalid && signupForm.get('pricePerHour')?.touched">
+                    price/hour is Required
+                </small>
+    
+              </div>
+            <div class="form-group">
+              <label>Enter Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter Your Password"
+                formControlName="password"
+                [ngClass]="{
+                  'valid' : form['password'].touched && form['password'].valid,
+                  'invalid' : form['password'].touched &&form['password'].invalid
+                }"
+              />
+              <small class="text-danger mt-3" *ngIf="form['password'].invalid && form['password'].touched">
+                password is required
+            </small>
+            </div>
+            <div class="form-group">
+              <label>confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter Your Password"
+                formControlName="confirmPassword"
+  
+              />
+                <small class="text-danger mt-3" *ngIf="form['confirmPassword'].invalid && form['confirmPassword'].touched">
+                password dosn't match
+            </small>
+            </div>
+
+            <div class="signup-btn text-center">
+              <button type="submit">Sign Up</button>
+            </div>
+  
+            <div class="create-btn text-center">
+              <p>
+                Have an Account?
+                <a routerLink="/login   " routerLinkActive="router-link-active">
+                  Sign In
+                  <i class="bx bx-chevrons-right bx-fade-right"></i>
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sign Up Section End -->
+  
