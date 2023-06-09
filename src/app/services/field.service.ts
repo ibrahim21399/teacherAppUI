@@ -31,11 +31,11 @@ export class FieldService {
   }
 
   updateField(field: Field): Observable<Field> {
-    return this.http.put<Field>(`${this._fields}/${field._id}`, field);
+    return this.http.put<Field>(`${this._fields}${field._id}`, field);
   }
 
   deleteField(id: string): Observable<Field> {
-    return this.http.delete<Field>(`${this._fields}/${id}`);
+    return this.http.delete<Field>(`${this._fields}${id}`);
   }
 
 

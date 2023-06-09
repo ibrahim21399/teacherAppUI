@@ -19,11 +19,11 @@ export class FieldComponent implements OnInit {
 
   getFields(): void {
     this.fieldService.getFields()
-      .subscribe(fields => {
-        this.fields = Object.values(fields);
-       console.log(this.fields);}
-        );
-  }
+      .subscribe(  (fields: Field[])=>{
+        console.log(fields)
+        this.fields=fields;
+      });
+      }
 
   onSelect(field: Field): void {
     this.selectedField = field;
