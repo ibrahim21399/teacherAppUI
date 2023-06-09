@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { ErrorComponent } from './error/error.component';
+
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
 
@@ -23,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     HomeComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorComponent
   ],
   providers:[]
   
