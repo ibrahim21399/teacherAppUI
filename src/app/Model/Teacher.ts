@@ -13,6 +13,7 @@ export interface Teacher {
     FieldId:string;
     // Filed:Field;
     rating: number;
+    pictureUrl: string
     registerationDate: Date;
     Active:boolean;
     AcceptanceDate: Date,
