@@ -37,7 +37,16 @@ export class AuthService {
       this.IsLogin.next(true);
       this.name.next(this.decodedToken.name);
       
-      this.router.navigateByUrl("/")
+      console.log(this.decodedToken.role)
+      if (this.decodedToken.role=="teacher")
+      this.router.navigateByUrl(`/teacherProfile/${this.decodedToken._id}`)
+      else if(this.decodedToken.role=="admin")
+      this.router.navigateByUrl(`/pendingTeachers`)
+      else
+
+        this.router.navigateByUrl(`/`)
+      
+
     },error => {
       this._sweetalertService.RunAlert(error.error.message,false);
     })
