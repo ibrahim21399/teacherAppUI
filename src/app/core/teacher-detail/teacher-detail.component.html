@@ -15,7 +15,8 @@
       <!-- <p class="card-text">Acceptance Date: {{ teacher.AcceptanceDate | date }}</p> -->
     </div>
     <div class="card-body">
-      <button class="btn btn-primary" (click)="Enroll()">Enroll</button>
+      <button *ngIf="!IsEnrollerd" class="btn btn-primary" (click)="Enroll()">Enroll</button>
+      <button  class="btn btn-primary" [disabled]="!IsEnrollerd" (click)="SendMessage()">Send Message</button>
 
     </div>
   </div>

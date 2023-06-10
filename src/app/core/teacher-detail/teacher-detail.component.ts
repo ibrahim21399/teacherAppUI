@@ -11,13 +11,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class TeacherDetailComponent implements OnInit{
   teacher: Teacher |any;
-  studentId: string="";
+  TeacherId: string="";
+  StudentId: string|any;
   IsEnrollerd:boolean=false;
 
   constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.loadTeacherDetails();
+    this.TeacherId=this.activateRoute.snapshot.params['id'];
+this.StudentId = localStorage.getItem('userId');
+
   }
 
   loadTeacherDetails() {
@@ -26,8 +30,10 @@ export class TeacherDetailComponent implements OnInit{
       if (response) {
         this.teacher = response;
         this.teacher = this.teacher[0];
-   
- 
+        if (Array.isArray(this.teacher.studentEnrolled) && this.teacher.studentEnrolled.includes(this.StudentId)) {
+          this.IsEnrollerd = true;
+        }
+         
 
       }
     }, error => {
@@ -35,9 +41,9 @@ export class TeacherDetailComponent implements OnInit{
     });
   }
   Enroll():void{
-let TeacherId=this.activateRoute.snapshot.params['id'];
-const userId = localStorage.getItem('userId');
-console.log(userId);
-console.log(TeacherId);
+this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{this.IsEnrollerd=true})
+  }
+  SendMessage():void{
+    
   }
 }
