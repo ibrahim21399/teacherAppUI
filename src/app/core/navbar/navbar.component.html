@@ -6,7 +6,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                       <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/">Home</a></li>
-                      <li class="nav-item"*ngIf="this.login.isloggedin && this.role=='admin'"><a class="nav-link" routerLink="/teachers">Teachers</a></li>
+                      <li class="nav-item"*ngIf="this.login.isloggedin && this.role=='admin'"><a class="nav-link" routerLink="/PendingTeachers">Teachers</a></li>
                       <li class="nav-item"*ngIf="this.login.isloggedin && this.role=='admin'"><a class="nav-link" routerLink="/students">Students</a></li>
                       <li class="nav-item"*ngIf="this.login.isloggedin && this.role=='admin'"><a class="nav-link" routerLink="/Fields">Fields</a></li>
                       <li class="nav-item"*ngIf="this.login.isloggedin && this.role=='student'"><a class="nav-link" routerLink="/TeachersList">Find Teacher</a></li>
