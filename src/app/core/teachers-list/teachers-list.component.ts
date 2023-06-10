@@ -22,6 +22,7 @@ export class TeachersListComponent  implements OnInit {
   this.teacherService.GetActiveTeachers()
     .subscribe(response => {
     if (response) {
+      console.log(response)
       this.teachers = response.data;
 
     }
