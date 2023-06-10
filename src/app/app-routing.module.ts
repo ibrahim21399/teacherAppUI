@@ -23,8 +23,8 @@ const routes: Routes = [
   {path:"PendingTeachers",component: PendingTeachersComponent},
   {path:"TeachersList",component: TeachersListComponent},
 
-  {path: "teacherDetail:id", component: TeacherDetailComponent},
-  {path: "teacherProfile:id", component: TeacherProfileComponent},
+  {path: "teacherDetail/:id", component: TeacherDetailComponent},
+  {path: "teacherProfile/:id", component: TeacherProfileComponent},
   {path:"error",component:ErrorComponent},
   {path:"",component:HomeComponent},
 
