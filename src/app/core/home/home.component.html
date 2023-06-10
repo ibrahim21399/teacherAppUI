@@ -34,14 +34,14 @@
               <!-- <span class="body-2">{{teacher.rating}}</span> / <span class="body-2">{{5}}</span> -->
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{ teacher.name }}</h5>
-              <p class="card-title">{{ teacher.rating }} / 5</p>
-              <p class="card-title">{{ teacher.pricePerHour }}</p>
+              <h2 class="card-title">{{ teacher.name }}</h2>
+              <h1 class="card-title  pricing-card-title">{{ teacher.pricePerHour }} $<small class="text-muted">/ hour</small></h1>
+              <app-rating [rate]="teacher.rating"></app-rating>
+
               <p class="card-text">{{ teacher.phone }}</p>
             </div>
         </div>
   </div>
-
 
 </div>
 </div>

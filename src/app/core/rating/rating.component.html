@@ -1,0 +1,19 @@
+<!-- <ng-container *ngFor="let rateVal of [5, 4, 3, 2, 1]">
+  <input (click)="rateProduct(1)" [id]="'star'+rateVal" [value]="rateVal-0.5" name="rating" type="radio" />
+  <label class="full" [for]="'star'+rateVal"></label>
+  <input (click)="rateProduct(rateVal-0.5)" [value]="rateVal-0.5" [id]="'halfstar'+rateVal" name="rating" type="radio" />
+  <label class="half" [for]="'halfstar'+rateVal"></label>
+</ng-container>
+
+<hr/> -->
+
+<div class="crop"
+     [style.width.px]="starWidth">
+  <div style="width: 75px">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+  </div>
+</div>
