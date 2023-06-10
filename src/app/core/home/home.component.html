@@ -26,10 +26,18 @@
 
   <div class="col" *ngFor="let teacher of highestRatedTeachers">
         <div class="card">
-            <img src="{{ teacher.pictureUrl }}" class="card-img-top" alt="...">
+            <!-- <img src="{{ teacher.pictureUrl }}" class="card-img-top" alt="..."> -->
+            <div class="rating">
+              <!-- <mat-toolbar color="primary"></mat-toolbar>
+              <app-review [rating]="teacher.rating"></app-review> -->
+
+              <!-- <span class="body-2">{{teacher.rating}}</span> / <span class="body-2">{{5}}</span> -->
+            </div>
             <div class="card-body">
               <h5 class="card-title">{{ teacher.name }}</h5>
-              <p class="card-text">{{ teacher.rating }}</p>
+              <p class="card-title">{{ teacher.rating }} / 5</p>
+              <p class="card-title">{{ teacher.pricePerHour }}</p>
+              <p class="card-text">{{ teacher.phone }}</p>
             </div>
         </div>
   </div>
@@ -40,3 +48,5 @@
 </div>
 
 </section>
+
+

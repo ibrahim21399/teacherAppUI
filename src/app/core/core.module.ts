@@ -15,13 +15,17 @@ import { FieldComponent } from './field/field.component';
 import { ActiveStudentsComponent } from './active-students/active-students.component';
 import { BlockedStudentsComponent } from './blocked-students/blocked-students.component';
 import { PendingTeachersComponent } from './pending-teachers/pending-teachers.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ReviewComponent } from './home/review/review.component';
 
-// import { DialogModule } from 'primeng/dialog';
-// import { ButtonModule } from 'primeng/button';
 
 
 
- 
+
 
 
 @NgModule({
@@ -36,15 +40,20 @@ import { PendingTeachersComponent } from './pending-teachers/pending-teachers.co
     FieldComponent,
     ActiveStudentsComponent,
     BlockedStudentsComponent,
-    PendingTeachersComponent
+    PendingTeachersComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatSnackBarModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   exports:[
     LoginComponent,
@@ -54,7 +63,7 @@ import { PendingTeachersComponent } from './pending-teachers/pending-teachers.co
     ErrorComponent
   ],
   providers:[]
-  
+
 
 })
 export class CoreModule { }
