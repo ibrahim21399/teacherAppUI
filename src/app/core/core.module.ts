@@ -38,7 +38,6 @@ import { ReviewComponent } from './home/review/review.component';
     StudentRegisterComponent,
     FieldComponent,
     ActiveStudentsComponent,
-    BlockedStudentsComponent,
     PendingTeachersComponent,
     ReviewComponent,
   ],
