@@ -14,7 +14,7 @@ export class TeacherService {
   private _Teachers=`${Url}teachers/`;
   private _HighstRate=`${Url}highrateteachers/`;
   private _apiGetAllNotAcceptedTeachers=`${Url}notactiveteachers`;
-  private _apiChangeStatusTeacher=`${Url}changeteacherstatus`;
+  private _activeteachers=`${Url}activeteachers/`;
 
 
 
@@ -32,9 +32,10 @@ export class TeacherService {
   GetNotAceptedTeachers():Observable<ServiceResponse<Teacher[]>>{
     return this._httpClient.get<ServiceResponse<Teacher[]>>(`${this._apiGetAllNotAcceptedTeachers}`)
   }
-  UpdateActivationOfTeacher(userId:string):Observable<ServiceResponse<boolean>>{
-    return this._httpClient.put<ServiceResponse<boolean>>(`${this._apiChangeStatusTeacher}`,null)
+  UpdateActivationOfTeacher(id:string):Observable<ServiceResponse<boolean>>{
+    return this._httpClient.get<ServiceResponse<boolean>>(`${this._activeteachers}${id}`)
   }
+  
   DeleteTeacher(userId:string):Observable<ServiceResponse<boolean>>{
     return this._httpClient.delete<ServiceResponse<boolean>>(`${this._Teachers}/${userId}`)
   }

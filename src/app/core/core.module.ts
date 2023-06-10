@@ -13,7 +13,6 @@ import { ErrorComponent } from './error/error.component';
 import { StudentRegisterComponent } from './student-register/student-register.component';
 import { FieldComponent } from './field/field.component';
 import { ActiveStudentsComponent } from './active-students/active-students.component';
-import { BlockedStudentsComponent } from './blocked-students/blocked-students.component';
 import { PendingTeachersComponent } from './pending-teachers/pending-teachers.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
@@ -41,7 +40,7 @@ import { ReviewComponent } from './home/review/review.component';
     ActiveStudentsComponent,
     BlockedStudentsComponent,
     PendingTeachersComponent,
-    ReviewComponent
+    ReviewComponent,
   ],
   imports: [
     CommonModule,

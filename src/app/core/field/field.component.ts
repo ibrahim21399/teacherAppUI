@@ -34,16 +34,6 @@ export class FieldComponent implements OnInit {
     if (!name) { return; }
     this.fieldService.addField({ name } as Field)
       .subscribe(field => {
-        this.fields.push(field);
-      });
-  }
-
-  update(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    const field = { ...this.selectedField, name };
-    this.fieldService.updateField(field)
-      .subscribe(() => {
         this.getFields();
       });
   }

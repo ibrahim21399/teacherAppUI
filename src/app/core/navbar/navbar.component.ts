@@ -8,12 +8,23 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   name:any;
-  islogin!: boolean;
-  constructor(public login:AuthService) { }
+  islogin: any;
+  role: any;
+  auth:boolean=false;
+  constructor(public login:AuthService) { 
+    if(localStorage.getItem("jwt_token")){
+      this.login.isloggedin = true;
+    }
+    else{
+      this.login.isloggedin = false;
+    }
+    this.role=localStorage.getItem("Role");
+    this.name = localStorage.getItem("name");
+
+  }
 
 
   ngOnInit(): void {
-    this.name = localStorage.getItem("name");
 this.login.getIsLogin().subscribe(res=>{
   this.islogin = res;
 

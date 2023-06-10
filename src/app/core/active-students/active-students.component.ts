@@ -16,13 +16,24 @@ export class ActiveStudentsComponent implements OnInit {
   }
 
   getAllActive(): void {
-    this.studentService.getActiveStudents()
-      .subscribe(students => this.students = students);
+    this.studentService.getAllStudents()
+      .subscribe(students => {
+        this.students = students;
+        console.log(students);
+      });
   }
 
 
+  Block(id:string):void{
+this.studentService.Block(id).subscribe(a=>{
+  this.getAllActive();
 
-
+})
+  }
+  Active(id:string):void{
+    this.studentService.Active(id).subscribe(a=>{
+      this.getAllActive();
+    })
 }
 
-
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
+import { FieldService } from 'src/app/services/field.service';
 import { SweetalertService } from 'src/app/services/general/sweetalert.service';
 
 @Component({
@@ -17,30 +18,41 @@ export class RegisterComponent implements OnInit {
   signupForm!: FormGroup;
   error: string = '';
   direction: string = '';
+  options: any[] = [];
+  selectedOption: any;
+
+
   constructor(
     private _teacherService: TeacherService,
     private _sweetalertService: SweetalertService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _fieldService: FieldService
   ) {
     this.signupForm = this.formBuilder.group({
-      name: [''],
+      name: ['',Validators.required],
       email: ['', Validators.required],
       pricePerHour:['',Validators.required],
       password: ['', [Validators.required]],
       confirmPassword: ['', Validators.required],
       phoneNumber: ['', Validators.required],
+      fieldId:[this.selectedOption],
       validator: this.MustMatch('password', 'confirmPassword'),
     });
   }
 
-  ngOnInit(): void {}
-  changeType() {
-    if (this.empType == 'Employer') this.isCompany = true;
-    else this.isCompany = false;
+  ngOnInit(): void {
+    this._fieldService.getFields().subscribe(
+      options => {
+        console.log(options)
+        this.options = options;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
   onSubmit() {
-    console.log(this.signupForm.value);
-
+    console.log(this.signupForm.value);   
     if (this.signupForm.invalid) {
       this._sweetalertService.RunAlert(
         'form not valid sholud check all inputs',
@@ -76,6 +88,10 @@ export class RegisterComponent implements OnInit {
       }
     };
   }
+  // onSelectOption() {
+  //   const selectedOption = this.signupForm.get('selectedOption').value;
+  //   this.signupForm.get('selectedOption').setValue(selectedOption);
+  // }
   get form() {
     return this.signupForm.controls;
   }
