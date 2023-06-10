@@ -37,11 +37,11 @@ export class TeacherService {
   }
 
   DeleteTeacher(userId:string):Observable<ServiceResponse<boolean>>{
-    return this._httpClient.delete<ServiceResponse<boolean>>(`${this._Teachers}/${userId}`)
+    return this._httpClient.delete<ServiceResponse<boolean>>(`${this._Teachers}${userId}`)
   }
 
-  getTeacherById(userId:string):Observable<ServiceResponse<Teacher>>{
-    return this._httpClient.delete<ServiceResponse<Teacher>>(`${this._Teachers}/${userId}`)
+  getTeacherById(userId:string):Observable<Teacher>{
+    return this._httpClient.get<Teacher>(`${this._Teachers}${userId}`)
   }
 
 }
