@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   teachers: Teacher[] = [];
   private userLatitude: number= 0 ;
   private userLongitude: number = 0 ;
+  role:any;
   map: any;
   @Input('rating') private rating: number = 3;
   @Input('starCount') private starCount: number = 5;
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getUserLocation();
     // this.getTeachers();
+    this.role =localStorage.getItem('Role');
     this.getActivatedTeachers();
      this.getTeachersWithHighstRate();
   }
