@@ -20,7 +20,9 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" class="img-fluid rounded-circle" alt="Teacher Avatar">
             </div>
             <div class="col-md-8">
-              <h5 class="card-title">{{ teacher.name }}</h5>
+              <a href="/teacherDetail/{{ teacher._id }}"> <h5 class="card-title">{{ teacher.name }}</h5></a>
+
+              
               <p class="card-text">{{ teacher.FieldId?teacher.FieldId.name:"-" }}</p>
               
               <div class="row">
@@ -31,7 +33,7 @@
                   <p class="card-text">{{ teacher.pricePerHour }} / hour</p>
                 </div>
               </div>
-              <a href="#" class="btn btn-success">Enroll</a>
+              <a href="/teacherDetail/{{ teacher._id }} " class="btn btn-success">Show Details</a>
             </div>
           </div>
         </div>
