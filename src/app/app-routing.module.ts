@@ -9,6 +9,7 @@ import { StudentRegisterComponent } from './core/student-register/student-regist
 import { FieldComponent } from './core/field/field.component';
 import { ActiveStudentsComponent } from './core/active-students/active-students.component';
 import { PendingTeachersComponent } from './core/pending-teachers/pending-teachers.component';
+import { TeacherDetailComponent } from './core/teacher-detail/teacher-detail.component';
 
 const routes: Routes = [
   {path:"login",component: LoginComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path:"Fields",component: FieldComponent},
   {path:"students",component: ActiveStudentsComponent},
   {path:"PendingTeachers",component: PendingTeachersComponent},
-
+  {path: "teacherDetail:id", component: TeacherDetailComponent},
   {path:"error",component:ErrorComponent},
   {path:"",component:HomeComponent},
 

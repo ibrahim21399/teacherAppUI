@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReviewComponent } from './home/review/review.component';
+import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 
 
 
@@ -40,6 +41,7 @@ import { ReviewComponent } from './home/review/review.component';
     ActiveStudentsComponent,
     PendingTeachersComponent,
     ReviewComponent,
+    TeacherDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,7 @@ import { ReviewComponent } from './home/review/review.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   providers:[]
 
