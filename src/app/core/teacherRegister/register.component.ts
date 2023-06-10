@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
   direction: string = '';
   options: any[] = [];
   selectedOption: any;
-  public lat:Number = 0;
-  public lng: Number = 0;
+  public lat:string = "0";
+  public lng: string = "0";
 
   constructor(
     private _teacherService: TeacherService,
@@ -38,27 +38,25 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       fieldId:[this.selectedOption],
-
+      Latitude:[this.lat],
+      Longitude: [this.lng],
       validator: this.MustMatch('password', 'confirmPassword'),
     });
   }
 
   ngOnInit(): void {
+    this.getLocation();
+
     this._fieldService.getFields().subscribe(
       options => {
         console.log(options)
         this.options = options;
-        // this.options.push(
-        //   { _id: '1', name: 'Field 1' },
-        //   { _id: '2', name: 'Field 2' },
-        //   { _id: '3', name: 'Field 3' }
-        // );
+
       },
       error => {
         console.log(error);
       }
     );
-    this.getLocation();
   }
   onSubmit() {
     console.log(this.signupForm.value);
@@ -103,11 +101,15 @@ export class RegisterComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         if (position) {
           console.log("Latitude: " + position.coords.latitude +
-            "Longitude: " + position.coords.longitude);
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
+            " Longitude: " + position.coords.longitude);
+          this.lat = position.coords.latitude.toString();
+          this.lng = position.coords.longitude.toString();
           console.log(this.lat);
-          console.log(this.lat);
+          console.log(this.lng);
+          this.signupForm.patchValue({
+            Latitude: this.lat,
+            Longitude: this.lng
+          });
         }
       },
         (error) => {
@@ -117,10 +119,7 @@ export class RegisterComponent implements OnInit {
       alert("Geolocation is not supported by this browser.");
     }
   }
-  // onSelectOption() {
-  //   const selectedOption = this.signupForm.get('selectedOption').value;
-  //   this.signupForm.get('selectedOption').setValue(selectedOption);
-  // }
+
   get form() {
     return this.signupForm.controls;
   }
