@@ -43,6 +43,10 @@ import { RatingComponent } from './rating/rating.component';
     ActiveStudentsComponent,
     PendingTeachersComponent,
     ReviewComponent,
+    RatingComponent,
+    TeacherProfileComponent,
+    TeacherDetailComponent,
+    TeachersListComponent
   ],
   imports: [
     CommonModule,
@@ -62,6 +66,7 @@ import { RatingComponent } from './rating/rating.component';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
+
   ],
   providers:[]
 
