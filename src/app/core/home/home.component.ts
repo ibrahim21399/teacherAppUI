@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit {
   private userLongitude: number = 0 ;
   role:any;
   map: any;
+  name:any;
+  Id:any;
+  islogin: any;
+  authentic:boolean=false;
   @Input('rating') private rating: number = 3;
   @Input('starCount') private starCount: number = 5;
   @Input('color') public color: string = 'accent';
@@ -29,14 +33,35 @@ export class HomeComponent implements OnInit {
   public ratingArr = [];
 
   constructor(public auth:AuthService, private http: HttpClient, private teacherService:TeacherService,
-     private snackBar: MatSnackBar) { }
+     private snackBar: MatSnackBar, public login:AuthService) {
+
+      if(localStorage.getItem("jwt_token")){
+        this.login.isloggedin = true;
+      }
+      else{
+        this.login.isloggedin = false;
+      }
+      this.name = localStorage.getItem("name");
+      this.role=localStorage.getItem("Role");
+      this.Id = localStorage.getItem("Id");
+
+     }
 
   ngOnInit() {
     this.getUserLocation();
-    // this.getTeachers();
     this.role =localStorage.getItem('Role');
     this.getActivatedTeachers();
      this.getTeachersWithHighstRate();
+     this.name = localStorage.getItem("name");
+     this.login.getname().subscribe(res=>{
+       this.name =res;
+     })
+       this.login.getIsLogin().subscribe(res=>{
+       this.islogin = res;
+
+
+     });
+
   }
   onClick(rating:number) {
     console.log(rating)
