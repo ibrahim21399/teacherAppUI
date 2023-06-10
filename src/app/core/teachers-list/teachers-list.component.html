@@ -1,6 +1,18 @@
 <div class="container">
+  <div class="form-group row">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchText">
+    </div>
+    <div class="col-md-6">
+      <select class="form-control" [(ngModel)]="selectedField">
+        <option value="">All fields</option>
+        <option *ngFor="let field of fields" [value]="field">{{ field.name }}</option>
+      </select>
+    </div>
+  </div>
+
   <div class="row">
-    <div class="col-md-4" *ngFor="let teacher of teachers">
+    <div class="col-md-4" *ngFor="let teacher of teachers | filter: {name: searchText, FieldId: selectedField}">
       <div class="card">
         <div class="card-body">
           <div class="row align-items-center">
@@ -19,7 +31,7 @@
                   <p class="card-text">{{ teacher.pricePerHour }} / hour</p>
                 </div>
               </div>
-              <a href="#" class="btn btn-primary">Enroll</a>
+              <a href="#" class="btn btn-success">Enroll</a>
             </div>
           </div>
         </div>

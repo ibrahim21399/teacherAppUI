@@ -20,6 +20,7 @@ export class AuthService {
   email = "";
   decodedToken:any; 
   private IsLogin = new Subject<any>();
+  private name = new Subject<any>();
 
   constructor(private http: HttpClient,private router:Router,private _sweetalertService: SweetalertService) {
 
@@ -34,6 +35,8 @@ export class AuthService {
       this.email = email
       this.isloggedin = true;
       this.IsLogin.next(true);
+      this.name.next(this.decodedToken.name);
+      
       this.router.navigateByUrl("/")
     },error => {
       this._sweetalertService.RunAlert(error.error.message,false);
@@ -56,5 +59,10 @@ sendIsLogin(login:boolean = false){
 getIsLogin(){
   return this.IsLogin.asObservable();
 }
-
+sendname(name:string =""){
+  this.name.next(name);
+}
+getname(){
+  return this.name.asObservable();
+}
 }

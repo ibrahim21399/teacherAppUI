@@ -24,6 +24,9 @@ import { ReviewComponent } from './home/review/review.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { FilterPipe } from '../Filters/filter.pipe';
+
+
 import { RatingComponent } from './rating/rating.component';
 
 
@@ -46,6 +49,7 @@ import { RatingComponent } from './rating/rating.component';
     RatingComponent,
     TeacherProfileComponent,
     TeacherDetailComponent,
+    FilterPipe,
     TeachersListComponent
   ],
   imports: [

@@ -1,42 +1,43 @@
 
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="login-wrap py-5">
-                    <h2 class="text-center mb-0">Welcome</h2>
-                    <br>
-                    <form action="#" class="login-form">
-                        <div class="form-group">
-                            <div class="icon d-flex align-items-center justify-content-center"><span
-                                    class="fa fa-user"></span></div>
-                            <input type="text" class="form-control" placeholder="Email or Username" required
-                                [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="form-group">
-                            <div class="icon d-flex align-items-center justify-content-center"><span
-                                    class="fa fa-lock"></span></div>
-                            <input id="password-field" type="{{pass}}" class="form-control" placeholder="Password"
-                                required [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-                            <span toggle="#password-field" class="fa fa-fw {{fa}} field-icon toggle-password"
-                                (click)="pass = (pass=='password')?'text':'password';fa=(fa=='fa-eye')?'fa-eye-slash':'fa-eye'"></span>
 
+<div class="col-sm-6  mx-auto">
+    <!-- Sign up Section Start -->
+  
+  <div class="signup-section ptb-100 card p-3 shadow">
+      <div class="container">
+        <h1 class="text-center title">Welcome </h1>
+        <hr class="m-3">
+  
+        <div class="row">
+          <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+            <form action="#" class="login-form">
+                <div class="form-group">
 
-                        </div>
-                        <div *ngIf="message != ''"><span class="text-danger">{{message}}</span></div>
-                        <div class="form-group">
-                            <button type="submit" class="btn form-control btn-primary rounded submit px-3"
-                                (click)="login()">Log In</button>
-                        </div>
-                    </form>
-                    <div class="w-100 text-center mt-4 text">
-                        <p class="mb-0">Don't have an account?</p>
-                        <a [routerLink]="'/StudentRegister'">Sign Up as Student</a><br>
-                        <a [routerLink]="'/TeacherRegister'">Sign Up as Teacher</a>
-
-                    </div>
+                    <input type="text" class="form-control" placeholder="Email or Username" required
+                        [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
                 </div>
+                <div class="form-group">
+
+                    <input id="password-field" type="{{pass}}" class="form-control" placeholder="Password"
+                        required [(ngModel)]="password" [ngModelOptions]="{standalone: true}"/> <small>                    <span toggle="#password-field" class="fa fa-fw {{fa}} field-icon toggle-password"
+                            (click)="pass = (pass=='password')?'text':'password';fa=(fa=='fa-eye')?'fa-eye-slash':'fa-eye'"></span></small>
+                </div>
+                <div *ngIf="message != ''"><span class="text-danger">{{message}}</span></div>
+                <div class="form-group">
+                    <button type="submit" class="btn form-control btn-primary rounded submit px-3"
+                        (click)="login()">Log In</button>
+                </div>
+            </form>
+            <div class="w-100 text-center mt-4 text">
+                <p class="mb-0">Don't have an account?</p>
+                <a [routerLink]="'/StudentRegister'">Sign Up as Student</a><br>
+                <a [routerLink]="'/TeacherRegister'">Sign Up as Teacher</a>
+
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+    <!-- Sign Up Section End -->
+    
+  </div>
