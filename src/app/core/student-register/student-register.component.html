@@ -21,7 +21,8 @@
                       <small class="text-danger mt-3" *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
                         Name is required *
                         </small>
-                    </div>
+                    </div></div>
+                    <div class="col-md-6">
                     <div class="form-group">
                         <input
                         type="email"
@@ -51,6 +52,8 @@
                       <small class="text-danger mt-3" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
                         password is required *
                         </small>                    </div>
+                        </div>
+                        <div class="col-md-6">
                     <div class="form-group">
                         <input
                         type="password"

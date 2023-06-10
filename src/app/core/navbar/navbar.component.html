@@ -1,5 +1,5 @@
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
           <div class="container px-4 px-lg-5">
               <a class="navbar-brand" href="#!">Start Bootstrap</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -32,6 +32,9 @@
                         <a class="nav-link"  routerLink="/login"><span class="glyphicon glyphicon-user"></span>Login</a>
                       </li>
                       <ng-template #logoutbutton>
+                        <li class="nav-item">
+                          <a class="nav-link" ><span><i class="bi bi-box-arrow-in-right"></i></span>{{name}} </a>
+                        </li>
                       <li class="nav-item">
                         <a class="nav-link" routerLink="/login" (click)="logout()"><span><i class="bi bi-box-arrow-in-right"></i></span> logout</a>
                       </li>
