@@ -36,7 +36,13 @@
               <!-- <span class="body-2">{{teacher.rating}}</span> / <span class="body-2">{{5}}</span> -->
             </div>
             <div class="card-body">
-              <h2 class="card-title">{{ teacher.name }}</h2>
+                <a class="card-title" *ngIf="!this.login.isloggedin;else NotClickable " routerLink="/teacherDetail/{{Id}}">{{ teacher.name }}</a>
+              <ng-template #NotClickable>
+
+                <h2 class="card-title">{{ teacher.name }}</h2>
+
+            </ng-template>
+
               <h1 class="card-title  pricing-card-title">{{ teacher.pricePerHour }} $<small class="text-muted">/ hour</small></h1>
               <app-rating [rate]="teacher.rating"></app-rating>
 
