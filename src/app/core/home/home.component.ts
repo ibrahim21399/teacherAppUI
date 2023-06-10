@@ -64,45 +64,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getStaticTeachersFortest() {
-
-    this.teachers = [
-      {
-        _id: '1',
-        name: 'John Doe',
-        email: 'john@example.com',
-        password: 'password',
-        phone: '1234567890',
-        pricePerHour: 20,
-        experience: 5,
-        Latitude: 51.5074,
-        Longitude: -0.1278,
-        FieldId: '1',
-        pictureUrl:"",
-        rating: 4.5,
-        registerationDate: new Date(),
-        Active: true,
-        AcceptanceDate: new Date()
-      },
-      {
-        _id: '2',
-        name: 'Jane Smith',
-        email: 'jane@example.com',
-        password: 'password',
-        phone: '0987654321',
-        pricePerHour: 25,
-        experience: 3,
-        Latitude: 51.5072,
-        Longitude: -0.1279,
-        FieldId: '2',
-        pictureUrl:"",
-        rating: 4.2,
-        registerationDate: new Date(),
-        Active: true,
-        AcceptanceDate: new Date()
-      }
-      ];
-      }
 
   getTeachersWithHighstRate() {
     this.teacherService.getTeachersWithHighestRate()

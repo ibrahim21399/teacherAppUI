@@ -5,18 +5,15 @@ import { environment } from 'src/environments/environment';
 import { ServiceResponse } from 'src/app/Model/serviceResponse';
 import { Student } from 'src/app/Model/Student';
 
-
 const Url=environment.apiUrl
 @Injectable({
   providedIn: 'root'
 })
+
 export class StudentService {
   private _students=`${Url}students/`;
   private _Block=`${Url}BlockStudent/`;
   private _Active=`${Url}ActiveStudent/`;
-
-
-
 
   constructor(private http:HttpClient) { }
   StudentRegiser(student:Student):Observable<ServiceResponse<boolean>>{

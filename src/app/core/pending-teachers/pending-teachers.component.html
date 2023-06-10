@@ -1,1 +1,27 @@
-<p>pending-teachers works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Price Per Hour</th>
+      <th>Field</th>
+      <th>Registration Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of Teachers">
+      <td>{{ teacher.name }}</td>
+      <td>{{ teacher.email }}</td>
+      <td>{{ teacher.pricePerHour }}</td>
+      <td>{{ teacher.Filed.name?teacher.Filed.name:"-" }}</td>
+      <td>{{ teacher.registerationDate | date }}</td>
+      <td>{{ teacher.Active ? 'Accepted' : 'Pending' }}</td>
+      <td>
+
+        <button *ngIf="!teacher.Active" class="btn btn-primary" (click)="Accept(teacher._id)">Accept</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
