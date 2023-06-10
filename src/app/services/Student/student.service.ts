@@ -11,14 +11,27 @@ const Url=environment.apiUrl
   providedIn: 'root'
 })
 export class StudentService {
-  private _student=`${Url}students/`;
+  private _students=`${Url}students/`;
+  private _Blockedstudents=`${Url}blockedstudents/`;
+  private _changestdstatus=`${Url}changestdstatus/`;
 
 
 
 
-  constructor(private _httpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
   StudentRegiser(student:Student):Observable<ServiceResponse<boolean>>{
-    return this._httpClient.post<ServiceResponse<boolean>>(`${this._student}`,student)
+    return this.http.post<ServiceResponse<boolean>>(`${this._students}`,student)
   }
-  
+  getActiveStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this._students}`);
+  }
+
+  getBlockedStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this._Blockedstudents}`);
+  }
+
+  changeStudentStatus(std:Student): Observable<Student> {
+    return this.http.put<Student>(`${this._changestdstatus}`, std);
+
+  }
 }

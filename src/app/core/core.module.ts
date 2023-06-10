@@ -12,6 +12,9 @@ import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { StudentRegisterComponent } from './student-register/student-register.component';
 import { FieldComponent } from './field/field.component';
+import { ActiveStudentsComponent } from './active-students/active-students.component';
+import { BlockedStudentsComponent } from './blocked-students/blocked-students.component';
+import { PendingTeachersComponent } from './pending-teachers/pending-teachers.component';
 
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
@@ -30,7 +33,10 @@ import { FieldComponent } from './field/field.component';
     FooterComponent,
     ErrorComponent,
     StudentRegisterComponent,
-    FieldComponent
+    FieldComponent,
+    ActiveStudentsComponent,
+    BlockedStudentsComponent,
+    PendingTeachersComponent
   ],
   imports: [
     CommonModule,
