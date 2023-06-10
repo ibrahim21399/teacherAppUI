@@ -41,9 +41,21 @@
                   'valid' :signupForm.get('phoneNumber')?.touched && signupForm.get('phoneNumber')?.valid,
                   'invalid' : form['phoneNumber'].touched &&form['phoneNumber'].invalid}"
               />
-              <small class="text-danger mt-3" *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched">
-                Phone Number is Required
-              </small>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Latitude"
+                [ngClass]="{lat}"
+                [hidden]="true"
+              />
+
+              <input
+                type="text"
+                class="form-control"
+                [hidden]="true"
+                formControlName="Longitude"
+                [ngClass]="{lng}"
+              />
 
             </div>
             <div class="formGroup">
