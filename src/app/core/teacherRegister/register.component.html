@@ -46,6 +46,12 @@
               </small>
   
             </div>
+            <div class="formGroup">
+            <label>Filed Of knowledge</label>
+            <select class="form-control" formControlName="fieldId" id="my-select" [(ngModel)]="selectedOption"  name="fieldId">
+              <option *ngFor="let option of options" [value]="option._id">{{ option.name }}</option>
+            </select>
+          </div>
             <div class="form-group">
                 <label>Enter price/hour</label>
                 <input
