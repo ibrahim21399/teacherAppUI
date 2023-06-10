@@ -9,7 +9,7 @@ import { TeacherService } from 'src/app/services/Teacher/teacher.service';
   styleUrls: ['./teacher-detail.component.css']
 })
 export class TeacherDetailComponent {
-  teacher!: Teacher;
+  teacher: Teacher |any;
 
   constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute) { }
 
@@ -17,15 +17,16 @@ export class TeacherDetailComponent {
     this.loadTeacherDetails();
   }
 
-  loadTeacherDetails () {
-    this.activateRoute.params.subscribe(a=> {
-      this.teacherService.getTeacherById(a['id']).subscribe( teacher =>
-        this.teacher = teacher.data
-      )
+  loadTeacherDetails() {
+    const id = this.activateRoute.snapshot.params['id'];
+    console.log(id)
+    this.teacherService.getTeacherById(id).subscribe(response => {
+      if (response) {
+        this.teacher = response;
+        console.log(this.teacher)
+      }
     }, error => {
       console.log(error);
-
     });
-
-}
+  }
 }

@@ -19,7 +19,7 @@ export class TeacherProfileComponent {
     loadTeacherDetails () {
       this.activateRoute.params.subscribe(a=> {
         this.teacherService.getTeacherById(a['id']).subscribe( teacher =>
-          this.teacher = teacher.data
+          this.teacher = teacher
         )
       }, error => {
         console.log(error);
