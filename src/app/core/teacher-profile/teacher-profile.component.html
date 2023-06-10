@@ -10,13 +10,15 @@
       <!-- <p class="card-text">Location: {{ teacher.Latitude }}, {{ teacher.Longitude }}</p> -->
       <!-- <p class="card-text">Field: {{ teacher.Field.name }}</p> -->
       <p class="card-text">Rating: {{ teacher.rating }} </p>
-      <!-- <p class="card-text">Registration Date: {{ teacher.registerationDate | date }}</p> -->
-      <!-- <p class="card-text">Active: {{ teacher.Active ? 'Yes' : 'No' }}</p> -->
-      <!-- <p class="card-text">Acceptance Date: {{ teacher.AcceptanceDate | date }}</p> -->
+      <p class="card-text">Registration Date: {{ teacher.registerationDate | date }}</p>
+      <p class="card-text">Active: {{ teacher.Active ? 'Yes' : 'No' }}</p>
+      <p class="card-text">Acceptance Date: {{ teacher.AcceptanceDate | date }}</p>
     </div>
     <div class="card-body">
-
-      <button class="btn btn-success">Enroll Course</button>
+      <a routerLink="/ٌٌRegister/{{teacher._id}}">
+        <h6 class="text-uppercase">ٌٌRegistered Students</h6>
+      </a>
+      <!-- <button class="btn btn-success">My Student List</button> -->
     </div>
   </div>
 </div>

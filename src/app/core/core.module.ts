@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReviewComponent } from './home/review/review.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
+import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 
 
 
@@ -42,6 +43,7 @@ import { TeacherDetailComponent } from './teacher-detail/teacher-detail.componen
     PendingTeachersComponent,
     ReviewComponent,
     TeacherDetailComponent,
+    TeacherProfileComponent,
   ],
   imports: [
     CommonModule,
