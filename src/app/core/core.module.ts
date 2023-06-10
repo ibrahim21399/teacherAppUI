@@ -20,9 +20,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReviewComponent } from './home/review/review.component';
+
+import { TeachersListComponent } from './teachers-list/teachers-list.component';
+import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
+import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 import { RatingComponent } from './rating/rating.component';
-
-
 
 
 
@@ -41,7 +43,6 @@ import { RatingComponent } from './rating/rating.component';
     ActiveStudentsComponent,
     PendingTeachersComponent,
     ReviewComponent,
-    RatingComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +61,7 @@ import { RatingComponent } from './rating/rating.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   providers:[]
 

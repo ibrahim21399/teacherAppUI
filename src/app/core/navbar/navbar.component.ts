@@ -8,10 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   name:any;
+  Id:any;
   islogin: any;
   role: any;
   auth:boolean=false;
-  constructor(public login:AuthService) { 
+  constructor(public login:AuthService) {
     if(localStorage.getItem("jwt_token")){
       this.login.isloggedin = true;
     }
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
     }
     this.role=localStorage.getItem("Role");
     this.name = localStorage.getItem("name");
+    this.Id = localStorage.getItem("Id");
 
   }
 

@@ -9,6 +9,9 @@ import { StudentRegisterComponent } from './core/student-register/student-regist
 import { FieldComponent } from './core/field/field.component';
 import { ActiveStudentsComponent } from './core/active-students/active-students.component';
 import { PendingTeachersComponent } from './core/pending-teachers/pending-teachers.component';
+import { TeachersListComponent } from './core/teachers-list/teachers-list.component';
+import { TeacherDetailComponent } from './core/teacher-detail/teacher-detail.component';
+import { TeacherProfileComponent } from './core/teacher-profile/teacher-profile.component';
 
 const routes: Routes = [
   {path:"login",component: LoginComponent},
@@ -18,7 +21,10 @@ const routes: Routes = [
   {path:"Fields",component: FieldComponent},
   {path:"students",component: ActiveStudentsComponent},
   {path:"PendingTeachers",component: PendingTeachersComponent},
+  {path:"TeachersList",component: TeachersListComponent},
 
+  {path: "teacherDetail:id", component: TeacherDetailComponent},
+  {path: "teacherProfile:id", component: TeacherProfileComponent},
   {path:"error",component:ErrorComponent},
   {path:"",component:HomeComponent},
 
