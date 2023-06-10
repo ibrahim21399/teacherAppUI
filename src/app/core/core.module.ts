@@ -23,6 +23,7 @@ import { ReviewComponent } from './home/review/review.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { FilterPipe } from '../Filters/filter.pipe';
 
 
 
@@ -45,7 +46,8 @@ import { TeacherProfileComponent } from './teacher-profile/teacher-profile.compo
     ReviewComponent,
     TeachersListComponent,
     TeacherDetailComponent,
-    TeacherProfileComponent
+    TeacherProfileComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
