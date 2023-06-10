@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let teacher of teachers">
+      <div class="card">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-md-4">
+              <img src="./../../../assets/images/teacher.png" class="img-fluid rounded-circle" alt="Teacher Avatar">
+            </div>
+            <div class="col-md-8">
+              <h5 class="card-title">{{ teacher.name }}</h5>
+              <p class="card-text">{{ teacher.phone }}</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="card-text">{{ teacher.rating }} / 5</p>
+                </div>
+                <div class="col-md-6">
+                  <p class="card-text">{{ teacher.pricePerHour }} / hour</p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-primary">Enroll</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
