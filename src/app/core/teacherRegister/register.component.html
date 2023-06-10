@@ -50,7 +50,7 @@
                 type="text"
                 class="form-control"
                 formControlName="Latitude"
-                [ngClass]="{lat}"
+                {{lng}}
                 [hidden]="true"
               />
 
@@ -59,7 +59,7 @@
                 class="form-control"
                 [hidden]="true"
                 formControlName="Longitude"
-                [ngClass]="{lng}"
+                {{lng}}
               />
 
             </div>
