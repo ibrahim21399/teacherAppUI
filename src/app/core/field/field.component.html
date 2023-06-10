@@ -1,0 +1,28 @@
+<h2>Fields</h2>
+
+<div class="form-inline">
+  <label>Add new field:</label>
+  <div class="input-group">
+    <input type="text" class="form-control" #newField />
+    <div class="input-group-append">
+      <button class="btn btn-primary" (click)="add(newField.value); newField.value=''">Add</button>
+    </div>
+  </div>
+</div>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let field of fields" (click)="onSelect(field)" [class.selected]="field === selectedField">
+      <td>{{field.name}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="delete(field)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
