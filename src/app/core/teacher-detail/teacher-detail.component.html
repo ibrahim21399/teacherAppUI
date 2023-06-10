@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center align-items-center ">
+  <div class="card" *ngIf="teacher">
+    <!-- <img src="{{ teacher.pictureUrl }}" class="card-img-top" alt="Teacher Image"> -->
+    <div class="card-body">
+      <h5 class="card-title">{{ teacher.name }} </h5>
+      <p class="card-text">Email: {{ teacher.email }} </p>
+      <p class="card-text">Phone: {{ teacher.phone }} </p>
+      <p class="card-text">Price per Hour: {{ teacher.pricePerHour }} </p>
+      <p class="card-text">Experience: {{ teacher.experience }} </p>
+      <!-- <p class="card-text">Location: {{ teacher.Latitude }}, {{ teacher.Longitude }}</p> -->
+      <!-- <p class="card-text">Field: {{ teacher.Field.name }}</p> -->
+      <p class="card-text">Rating: {{ teacher.rating }} </p>
+      <!-- <p class="card-text">Registration Date: {{ teacher.registerationDate | date }}</p> -->
+      <!-- <p class="card-text">Active: {{ teacher.Active ? 'Yes' : 'No' }}</p> -->
+      <!-- <p class="card-text">Acceptance Date: {{ teacher.AcceptanceDate | date }}</p> -->
+    </div>
+    <div class="card-body">
+
+      <button class="btn btn-success">Enroll Course</button>
+    </div>
+  </div>
+</div>
