@@ -17,7 +17,7 @@
                 placeholder="Enter Your Full Name"
                 formControlName="name"
               />
-  
+
             </div>
             <div class="form-group">
               <label>Enter Email</label>
@@ -33,7 +33,7 @@
               <small class="text-danger mt-3" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
                 email is required
                 </small>
-  
+
             </div>
             <div class="form-group">
               <label>Enter phone number</label>
@@ -49,7 +49,7 @@
               <small class="text-danger mt-3" *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched">
                 Phone Number is Required
               </small>
-  
+
             </div>
             <div class="formGroup">
             <label>Filed Of knowledge</label>
@@ -71,7 +71,7 @@
                 <small class="text-danger mt-3" *ngIf="signupForm.get('pricePerHour')?.invalid && signupForm.get('pricePerHour')?.touched">
                     price/hour is Required
                 </small>
-    
+
               </div>
             <div class="form-group">
               <label>Enter Password</label>
@@ -96,7 +96,7 @@
                 class="form-control"
                 placeholder="Enter Your Password"
                 formControlName="confirmPassword"
-  
+
               />
                 <small class="text-danger mt-3" *ngIf="form['confirmPassword'].invalid && form['confirmPassword'].touched">
                 password dosn't match
@@ -105,8 +105,9 @@
 
             <div class="signup-btn text-center">
               <button class="btn btn-primary" type="submit">Sign Up</button>
+              <button class="btn btn-primary" type="submit">Sign Up</button>
             </div>
-  
+
             <div class="create-btn text-center">
               <p>
                 Have an Account?
