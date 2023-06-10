@@ -12,8 +12,8 @@ const Url=environment.apiUrl
 })
 export class StudentService {
   private _students=`${Url}students/`;
-  private _Blockedstudents=`${Url}blockedstudents/`;
-  private _changestdstatus=`${Url}changestdstatus/`;
+  private _Block=`${Url}BlockStudent/`;
+  private _Active=`${Url}ActiveStudent/`;
 
 
 
@@ -22,16 +22,15 @@ export class StudentService {
   StudentRegiser(student:Student):Observable<ServiceResponse<boolean>>{
     return this.http.post<ServiceResponse<boolean>>(`${this._students}`,student)
   }
-  getActiveStudents(): Observable<Student[]> {
+  getAllStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(`${this._students}`);
   }
 
-  getBlockedStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this._Blockedstudents}`);
+  Block(id:string): Observable<Student> {
+    return this.http.get<Student>(`${this._Block}${id}`);
   }
 
-  changeStudentStatus(std:Student): Observable<Student> {
-    return this.http.put<Student>(`${this._changestdstatus}`, std);
-
+  Active(id:string): Observable<Student> {
+    return this.http.get<Student>(`${this._Active}${id}`);
   }
 }
