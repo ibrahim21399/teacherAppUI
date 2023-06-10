@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
+import { Position } from 'src/app/Model/Position'
 import { FieldService } from 'src/app/services/field.service';
 import { SweetalertService } from 'src/app/services/general/sweetalert.service';
 
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   direction: string = '';
   options: any[] = [];
   selectedOption: any;
-
+  public lat:Number = 0;
+  public lng: Number = 0;
 
   constructor(
     private _teacherService: TeacherService,
@@ -36,6 +38,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       fieldId:[this.selectedOption],
+
       validator: this.MustMatch('password', 'confirmPassword'),
     });
   }
@@ -45,14 +48,20 @@ export class RegisterComponent implements OnInit {
       options => {
         console.log(options)
         this.options = options;
+        // this.options.push(
+        //   { _id: '1', name: 'Field 1' },
+        //   { _id: '2', name: 'Field 2' },
+        //   { _id: '3', name: 'Field 3' }
+        // );
       },
       error => {
         console.log(error);
       }
     );
+    this.getLocation();
   }
   onSubmit() {
-    console.log(this.signupForm.value);   
+    console.log(this.signupForm.value);
     if (this.signupForm.invalid) {
       this._sweetalertService.RunAlert(
         'form not valid sholud check all inputs',
@@ -63,7 +72,7 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     this._teacherService.TeacherRegiser(this.signupForm.value).subscribe((res) => {
         this._sweetalertService.RunAlert(res.message, true);
-    
+
     },(error)=>{
 
       this._sweetalertService.RunAlert(error.error.message, false);
@@ -87,6 +96,26 @@ export class RegisterComponent implements OnInit {
         matchingControl.setErrors(null);
       }
     };
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: Position) => {
+        if (position) {
+          console.log("Latitude: " + position.coords.latitude +
+            "Longitude: " + position.coords.longitude);
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          console.log(this.lat);
+          console.log(this.lat);
+        }
+      },
+        (error) => {
+          return console.log(error);
+        });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }
   // onSelectOption() {
   //   const selectedOption = this.signupForm.get('selectedOption').value;

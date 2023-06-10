@@ -20,12 +20,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReviewComponent } from './home/review/review.component';
+
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 import { FilterPipe } from '../Filters/filter.pipe';
 
 
+import { RatingComponent } from './rating/rating.component';
 
 
 
@@ -44,10 +46,11 @@ import { FilterPipe } from '../Filters/filter.pipe';
     ActiveStudentsComponent,
     PendingTeachersComponent,
     ReviewComponent,
-    TeachersListComponent,
-    TeacherDetailComponent,
+    RatingComponent,
     TeacherProfileComponent,
-    FilterPipe
+    TeacherDetailComponent,
+    FilterPipe,
+    TeachersListComponent
   ],
   imports: [
     CommonModule,
@@ -67,6 +70,7 @@ import { FilterPipe } from '../Filters/filter.pipe';
     FooterComponent,
     HomeComponent,
     ErrorComponent,
+
   ],
   providers:[]
 
