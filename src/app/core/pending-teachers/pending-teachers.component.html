@@ -15,7 +15,7 @@
       <td>{{ teacher.name }}</td>
       <td>{{ teacher.email }}</td>
       <td>{{ teacher.pricePerHour }}</td>
-      <td>{{ teacher.Filed.name?teacher.Filed.name:"-" }}</td>
+      <td>{{ teacher.FieldId?teacher.FieldId:"-" }}</td>
       <td>{{ teacher.registerationDate | date }}</td>
       <td>{{ teacher.Active ? 'Accepted' : 'Pending' }}</td>
       <td>
