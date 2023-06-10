@@ -1,12 +1,10 @@
-.note
-{
-    text-align: center;
-    height: 80px;
-    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-    color: #fff;
+.title {
+    font-family:cursive;
+    font-size: 2.5rem;
     font-weight: bold;
-    line-height: 80px;
-}
+    color: #0062cc;
+  }
+
 .form-content
 {
     padding: 5%;
@@ -15,13 +13,4 @@
 }
 .form-control{
     border-radius:1.5rem;
-}
-.btnSubmit
-{
-    border-radius:1.5rem;
-    padding: 1%;
-    width: 20%;
-    cursor: pointer;
-    background: #0062cc;
-    color: #fff;
 }

@@ -19,15 +19,19 @@ export class NavbarComponent implements OnInit {
     else{
       this.login.isloggedin = false;
     }
-    this.role=localStorage.getItem("Role");
     this.name = localStorage.getItem("name");
+    this.role=localStorage.getItem("Role");
     this.Id = localStorage.getItem("Id");
 
   }
 
 
   ngOnInit(): void {
-this.login.getIsLogin().subscribe(res=>{
+    this.name = localStorage.getItem("name");
+this.login.getname().subscribe(res=>{
+  this.name =res;
+})
+  this.login.getIsLogin().subscribe(res=>{
   this.islogin = res;
 
 

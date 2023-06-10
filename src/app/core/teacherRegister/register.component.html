@@ -1,6 +1,11 @@
-<!-- Sign up Section Start -->
-<div class="signup-section ptb-100">
+<div class="col-sm-6  mx-auto">
+  <!-- Sign up Section Start -->
+
+<div class="signup-section ptb-100 card p-3 shadow">
     <div class="container">
+      <h1 class="text-center title">Teacher Register</h1>
+      <hr class="m-3">
+
       <div class="row">
         <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
           <form class="signup-form"  [formGroup]="signupForm"  (ngSubmit)="onSubmit()">
@@ -41,9 +46,21 @@
                   'valid' :signupForm.get('phoneNumber')?.touched && signupForm.get('phoneNumber')?.valid,
                   'invalid' : form['phoneNumber'].touched &&form['phoneNumber'].invalid}"
               />
-              <small class="text-danger mt-3" *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched">
-                Phone Number is Required
-              </small>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Latitude"
+                [ngClass]="{lat}"
+                [hidden]="true"
+              />
+
+              <input
+                type="text"
+                class="form-control"
+                [hidden]="true"
+                formControlName="Longitude"
+                [ngClass]="{lng}"
+              />
 
             </div>
             <div class="formGroup">
@@ -105,7 +122,7 @@
             <div class="create-btn text-center">
               <p>
                 Have an Account?
-                <a routerLink="/login   " routerLinkActive="router-link-active">
+                <a routerLink="/login" routerLinkActive="router-link-active">
                   Sign In
                   <i class="bx bx-chevrons-right bx-fade-right"></i>
                 </a>
@@ -117,3 +134,5 @@
     </div>
   </div>
   <!-- Sign Up Section End -->
+
+</div>

@@ -1,77 +1,90 @@
 
-<div class="container register-form my-5">
-    <div class="form">
-        <div class="note">
-            <p>Register As Student to get the Features and Contact your Teachers</p>
+<div class="col-sm-6  mx-auto">
+    <!-- Sign up Section Start -->
+  
+  <div class="signup-section ptb-100 card p-3 shadow">
+      <div class="container">
+        <h1 class="text-center title">Student Register</h1>
+        <hr class="m-3">
+  
+        <div class="row">
+          <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+            <form class="signup-form"  [formGroup]="signupForm"  (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label>Enter Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Your Full Name"
+                  formControlName="name"
+                />
+    
+              </div>
+              <div class="form-group">
+                <label>Enter Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter Your Email"
+                  formControlName="email"
+                  [ngClass]="{
+                    'valid' :signupForm.get('email')?.touched && signupForm.get('email')?.valid,
+                    'invalid' : form['email'].touched &&form['email'].invalid}"
+                />
+                <small class="text-danger mt-3" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                  email is required
+                  </small>
+    
+              </div>
+          
+              <div class="form-group">
+                <label>Enter Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter Your Password"
+                  formControlName="password"
+                  [ngClass]="{
+                    'valid' : form['password'].touched && form['password'].valid,
+                    'invalid' : form['password'].touched &&form['password'].invalid
+                  }"
+                />
+                <small class="text-danger mt-3" *ngIf="form['password'].invalid && form['password'].touched">
+                  password is required
+              </small>
+              </div>
+              <div class="form-group">
+                <label>confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter Your Password"
+                  formControlName="confirmPassword"
+    
+                />
+                  <small class="text-danger mt-3" *ngIf="form['confirmPassword'].invalid && form['confirmPassword'].touched">
+                  password dosn't match
+              </small>
+              </div>
+  
+              <div class="signup-btn text-center">
+                <button class="btn btn-primary" type="submit">Sign Up</button>
+              </div>
+    
+              <div class="create-btn text-center">
+                <p>
+                  Have an Account?
+                  <a routerLink="/login" routerLinkActive="router-link-active">
+                    Sign In
+                    <i class="bx bx-chevrons-right bx-fade-right"></i>
+                  </a>
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
-        <form class="signup-form"  [formGroup]="signupForm"  (ngSubmit)="onSubmit()">
-        <div class="form-content">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Name *"
-                        formControlName="name"
-                        [ngClass]="{
-                          'valid' :signupForm.get('name')?.touched && signupForm.get('name')?.valid,
-                          'invalid' : form['name'].touched &&form['name'].invalid}"
-                      />
-                      <small class="text-danger mt-3" *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
-                        Name is required *
-                        </small>
-                    </div></div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Email *"
-                        formControlName="email"
-                        [ngClass]="{
-                          'valid' :signupForm.get('email')?.touched && signupForm.get('email')?.valid,
-                          'invalid' : form['email'].touched &&form['email'].invalid}"
-                      />
-                      <small class="text-danger mt-3" *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
-                        Email is required * 
-                        </small>
-                              </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input
-                        type="password"
-                        class="form-control"
-                        placeholder="Password *"
-                        formControlName="password"
-                        [ngClass]="{
-                          'valid' :signupForm.get('password')?.touched && signupForm.get('password')?.valid,
-                          'invalid' : form['password'].touched &&form['password'].invalid}"
-                      />
-                      <small class="text-danger mt-3" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
-                        password is required *
-                        </small>                    </div>
-                        </div>
-                        <div class="col-md-6">
-                    <div class="form-group">
-                        <input
-                        type="password"
-                        class="form-control"
-                        placeholder="confirm Password *"
-                        formControlName="confirmPassword"
-                        [ngClass]="{
-                          'valid' :signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.valid,
-                          'invalid' : form['confirmPassword'].touched &&form['confirmPassword'].invalid}"
-                      />
-                      <small class="text-danger mt-3" *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
-                        password dosn't match
-                    </small>                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btnSubmit">Submit</button>
-        </div>
-    </form>
-
+      </div>
     </div>
-</div>
+    <!-- Sign Up Section End -->
+    
+  </div>
