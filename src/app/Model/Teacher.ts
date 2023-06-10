@@ -10,8 +10,7 @@ export interface Teacher {
     experience:number;
     Latitude:number;
     Longitude:number;
-    FieldId:string;
-    Filed:Field;
+    FieldId:Field;
     rating: number;
     pictureUrl: string
     registerationDate: Date;
