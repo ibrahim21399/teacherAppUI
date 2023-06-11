@@ -77,7 +77,7 @@ console.log(this.newMessage)
     });
   }
   loadStdDetails() {
-    this.stdSer.getById(this.studentId).subscribe(response => {
+    this.stdSer.getStudentById(this.studentId).subscribe(response => {
       if (response) {
         this.user=response;           
 console.log(response)
