@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
   direction: string = '';
   options: any[] = [];
   selectedOption: any;
-  public lat:string = "0";
-  public lng: string = "0";
+  public Latitude:string = "0";
+  public Longitude: string = "0";
 
   constructor(
     private _teacherService: TeacherService,
@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       fieldId:[this.selectedOption],
-      lat: [''],
-      lng: [''],
+      Latitude: [''],
+      Longitude: [''],
       validator: this.MustMatch('password', 'confirmPassword'),
     });
   }
@@ -58,8 +58,8 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  
   onSubmit() {
-    console.log(this.signupForm.value);
     if (this.signupForm.invalid) {
       this._sweetalertService.RunAlert(
         'form not valid sholud check all inputs',
@@ -67,16 +67,24 @@ export class RegisterComponent implements OnInit {
       );
       return;
     }
-    this.loading = true;
-    this._teacherService.TeacherRegiser(this.signupForm.value).subscribe((res) => {
-        this._sweetalertService.RunAlert(res.message, true);
 
-    },(error)=>{
-
-      this._sweetalertService.RunAlert(error.error.message, false);
-
+    // Set the latitude and longitude values in the form data
+    this.signupForm.patchValue({
+      Latitude: this.Latitude,
+      Longitude: this.Longitude
     });
+
+    this.loading = true;
+    this._teacherService.TeacherRegiser(this.signupForm.value).subscribe(
+      (res) => {
+        this._sweetalertService.RunAlert(res.message, true);
+      },
+      (error) => {
+        this._sweetalertService.RunAlert(error.error.message, false);
+      }
+    );
   }
+
   MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
@@ -102,13 +110,13 @@ export class RegisterComponent implements OnInit {
         if (position) {
           console.log("Latitude: " + position.coords.latitude +
             " Longitude: " + position.coords.longitude);
-          this.lat = position.coords.latitude.toString();
-          this.lng = position.coords.longitude.toString();
-          console.log(this.lat);
-          console.log(this.lng);
+          this.Latitude = position.coords.latitude.toString();
+          this.Longitude = position.coords.longitude.toString();
+          console.log(this.Latitude);
+          console.log(this.Longitude);
           this.signupForm.patchValue({
-            Latitude: this.lat,
-            Longitude: this.lng
+            Latitude: this.Latitude,
+            Longitude: this.Longitude
           });
         }
       },
