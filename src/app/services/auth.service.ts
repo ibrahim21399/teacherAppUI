@@ -1,9 +1,9 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SweetalertService } from './sweetalert.service.service';
 import jwtDecode from 'jwt-decode';
 import { Subject } from 'rxjs';
+import { SweetalertService } from './general/sweetalert.service';
 
 
 
@@ -23,7 +23,7 @@ export class AuthService {
   private IsLogin = new Subject<any>();
   private name = new Subject<any>();
 
-  constructor(private http: HttpClient,private router:Router,private _sweetalertService: SweetalertService) {
+  constructor(private http: HttpClient,private router:Router,private _sweetalertService:SweetalertService) {
 
    }
 
@@ -52,7 +52,7 @@ export class AuthService {
       
 
     },error => {
-      this._sweetalertService.RunAlert(error.error.message,false);
+    this._sweetalertService.RunAlert(error.error.message,false);
     })
   }
 logout(){
