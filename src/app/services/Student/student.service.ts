@@ -14,6 +14,7 @@ export class StudentService {
   private _students=`${Url}students/`;
   private _Block=`${Url}BlockStudent/`;
   private _Active=`${Url}ActiveStudent/`;
+  private _StudentById=`${Url}StudentById/`;
 
   constructor(private http:HttpClient) { }
   StudentRegiser(student:Student):Observable<ServiceResponse<boolean>>{
@@ -29,5 +30,8 @@ export class StudentService {
 
   Active(id:string): Observable<Student> {
     return this.http.get<Student>(`${this._Active}${id}`);
+  }
+  getStudentById(userId:string):Observable<Student>{
+    return this.http.get<Student>(`${this._StudentById}${userId}`);
   }
 }
