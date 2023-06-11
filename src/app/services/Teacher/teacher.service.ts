@@ -15,6 +15,7 @@ export class TeacherService {
   private _HighstRate=`${Url}highrateteachers/`;
   private _apiGetAllNotAcceptedTeachers=`${Url}notactiveteachers`;
   private _activeteachers=`${Url}activeteachers/`;
+  private _enrollments = `${Url}enroll/`;
 
 
 
@@ -42,6 +43,11 @@ export class TeacherService {
 
   getTeacherById(userId:string):Observable<Teacher>{
     return this._httpClient.get<Teacher>(`${this._Teachers}${userId}`)
+  }
+
+  Enroll(teacherId: string, studentId: string): Observable<Teacher> {
+    const enrollment = { TeacherId: teacherId, StudentId: studentId };
+    return this._httpClient.post<Teacher>(`${this._enrollments}`, enrollment);
   }
 
 }

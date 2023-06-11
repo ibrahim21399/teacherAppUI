@@ -46,21 +46,12 @@
                   'valid' :signupForm.get('phoneNumber')?.touched && signupForm.get('phoneNumber')?.valid,
                   'invalid' : form['phoneNumber'].touched &&form['phoneNumber'].invalid}"
               />
-              <input
-                type="text"
-                class="form-control"
-                formControlName="Latitude"
-                {{lng}}
-                [hidden]="true"
-              />
+              <input type="hidden" class="form-control"  formControlName="lat"  [(ngModel)]="lat">
+              <input type="hidden" class="form-control" formControlName="lng"  [(ngModel)]="lng">
 
-              <input
-                type="text"
-                class="form-control"
-                [hidden]="true"
-                formControlName="Longitude"
-                {{lng}}
-              />
+
+
+
 
             </div>
             <div class="formGroup">

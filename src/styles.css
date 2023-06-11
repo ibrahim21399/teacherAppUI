@@ -90,7 +90,8 @@ body {
   padding-bottom: 80px; /* Adjust the padding-bottom to match the height of the fixed footer */
   background-image: url("./assets/images/www.jpg");
   background-repeat: no-repeat;
-  background-size: cover;}
+  background-size: cover;
+}
 
 
 

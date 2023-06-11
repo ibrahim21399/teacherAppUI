@@ -1,0 +1,49 @@
+.teacher-avatar {
+    width: 100%;
+    max-width: 80px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .btn-success {
+    background-color: #53C68C;
+    border-color: #53C68C;
+    font-weight: bold;
+  }
+  
+  .btn-success:hover {
+    background-color: #449D6E;
+    border-color: #449D6E;
+  }
+  nav {
+    margin-top: 20px;
+  }
+  
+  .page-link {
+    color: #53C68C;
+    border-color: #53C68C;
+  }
+  
+  .page-link:hover {
+    color: #fff;
+    background-color: #53C68C;
+    border-color: #53C68C;
+  }
+  
+  .page-item.disabled .page-link {
+    color: #999;
+    pointer-events: none;
+  }
+  
+  .page-item.active .page-link {
+    color: #fff;
+    background-color: #53C68C;
+    border-color: #53C68C;
+  }
+  

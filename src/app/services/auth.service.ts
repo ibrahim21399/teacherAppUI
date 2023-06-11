@@ -16,6 +16,7 @@ export class AuthService {
 
 
   role?: string;
+  userId: string | null = null; // initialize the userId property to null
   isloggedin = false;
   email = "";
   decodedToken:any; 
@@ -32,12 +33,23 @@ export class AuthService {
       this.decodedToken = jwtDecode<any>(res.token);
       localStorage.setItem("name", this.decodedToken.name);
       localStorage.setItem("Role", this.decodedToken.role)
+      localStorage.setItem("userId", this.decodedToken._id); // store
       this.email = email
       this.isloggedin = true;
       this.IsLogin.next(true);
       this.name.next(this.decodedToken.name);
+      this.userId = this.decodedToken._id;
+
+      console.log(this.decodedToken.role)
+      if (this.decodedToken.role=="teacher")
+      this.router.navigateByUrl(`/teacherProfile/${this.decodedToken._id}`)
+      else if(this.decodedToken.role=="admin")
+      this.router.navigateByUrl(`/pendingTeachers`)
+      else
+
+        this.router.navigateByUrl(`/`)
       
-      this.router.navigateByUrl("/")
+
     },error => {
       this._sweetalertService.RunAlert(error.error.message,false);
     })
@@ -53,6 +65,15 @@ return this.decodedToken.name;
 GetRole():any{
   return this.decodedToken.role;
 }
+GetId(): any {
+  // Check if the decodedToken exists and contains the _id field
+  if (this.decodedToken && this.decodedToken._id) {
+    return this.decodedToken._id;
+  } else {
+    return null;
+  }
+}
+
 sendIsLogin(login:boolean = false){
   this.IsLogin.next(login)
 }

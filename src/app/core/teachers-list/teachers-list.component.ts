@@ -12,11 +12,13 @@ import { FieldService } from 'src/app/services/field.service';
   styleUrls: ['./teachers-list.component.css']
 })
 export class TeachersListComponent  implements OnInit {
-  
+
   teachers: Teacher[] = [];
   fields: Field[] = [];
-  selectedField: any 
+  selectedField: any
   searchText:string="";
+  currentPage:number = 1;
+  itemsPerPage:number = 6;
 
   constructor(public auth:AuthService, private http: HttpClient, private teacherService:TeacherService,private fieldService:FieldService) { }
 
@@ -52,4 +54,20 @@ filterTeachers() {
     filteredTeachers = filteredTeachers.filter(teacher => teacher.FieldId === this.selectedField);
   }
   return filteredTeachers;
-}}
+}
+getTotalPages() {
+  return Math.ceil(this.teachers.length / this.itemsPerPage);
+}
+getPages() {
+  const totalPages = this.getTotalPages();
+  const pages = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i);
+  }
+
+  return pages;
+}
+
+
+}
