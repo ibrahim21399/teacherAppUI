@@ -30,4 +30,9 @@ export class StudentService {
   Active(id:string): Observable<Student> {
     return this.http.get<Student>(`${this._Active}${id}`);
   }
+
+  getById(userId:string):Observable<Student>{
+    return this.http.get<Student>(`${this._students}${userId}`)
+  }
+
 }
