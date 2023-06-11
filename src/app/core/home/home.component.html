@@ -2,10 +2,9 @@
 <header class="bg-dark py-5">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">Best Teacher</h1>
-      <p class="lead fw-normal text-white-50 mb-0">Find Best Teachers</p>
+      <h1 class="display-4 fw-bolder mb-3">Find the Best Teachers</h1>
+      <p class="lead fw-normal text-white-50 mb-4">Learn from the best teachers in the world</p>
       <button class="btn btn-success rounded mb-0" routerLink="/TeachersList" *ngIf="role=='student';">Find Your Teachers</button>
-
     </div>
   </div>
 </header>
@@ -15,46 +14,35 @@
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row">
       <!-- Map Section -->
-      <div class="col-12">
+      <div class="col-12 mb-5">
         <div id="map" style="height: 400px;"></div>
       </div>
 
       <!-- Highest Rated Teachers Section -->
-
-    </div>
-    <div class="container px-4 px-lg-5 mt-5">
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-  <div class="col" *ngFor="let teacher of highestRatedTeachers">
-        <div class="card">
-            <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" class="card-img-top" alt="..."> -->
-            <div class="rating">
-              <!-- <mat-toolbar color="primary"></mat-toolbar>
-              <app-review [rating]="teacher.rating"></app-review> -->
-
-              <!-- <span class="body-2">{{teacher.rating}}</span> / <span class="body-2">{{5}}</span> -->
-            </div>
-            <div class="card-body">
-                <a class="card-title" *ngIf="!this.login.isloggedin;else NotClickable " routerLink="/teacherDetail/{{Id}}">{{ teacher.name }}</a>
+      <div class="col-12">
+        <h2 class="text-center mb-5 text-white">Top Rated Teachers</h2>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5" *ngFor="let teacher of highestRatedTeachers; let i = index">
+        <div class="card h-100">
+          <div class="rating">
+            <app-rating [rate]="teacher.rating"></app-rating>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ teacher.name }}</h5>
+            <p class="card-text">{{ teacher.FieldId?teacher.FieldId.name:"-" }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="card-price mt-3">{{ teacher.pricePerHour }} <span class="text-muted fw-normal">$/hour</span></h4>
+              <a class="btn btn-primary" *ngIf="!this.login.isloggedin;else NotClickable" routerLink="/teacherDetail/{{Id}}">View Profile</a>
               <ng-template #NotClickable>
-
-                <h2 class="card-title">{{ teacher.name }}</h2>
-
-            </ng-template>
-
-              <h1 class="card-title  pricing-card-title">{{ teacher.pricePerHour }} $<small class="text-muted">/ hour</small></h1>
-              <app-rating [rate]="teacher.rating"></app-rating>
-
-              <p class="card-text">{{ teacher.FieldId?teacher.FieldId.name:"-" }}</p>
+                <a class="btn btn-primary " href="teacherDetail/{{teacher._id}}">View Profile</a>
+              </ng-template>
             </div>
+          </div>
         </div>
+        <!-- Add a new row after every 4th card -->
+        <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
+      </div>
+    </div>
   </div>
-
-</div>
-</div>
-</div>
-
 </section>
-
-

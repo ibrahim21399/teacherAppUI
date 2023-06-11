@@ -32,8 +32,7 @@ this.StudentId = localStorage.getItem('userId');
         this.teacher = this.teacher[0];
         if (Array.isArray(this.teacher.studentEnrolled) && this.teacher.studentEnrolled.includes(this.StudentId)) {
           this.IsEnrollerd = true;
-        }
-         
+        }      
 
       }
     }, error => {

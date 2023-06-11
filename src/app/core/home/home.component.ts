@@ -118,138 +118,14 @@ export class HomeComponent implements OnInit {
   getTeachersWithHighstRate() {
     this.teacherService.getTeachersWithHighestRate()
       .subscribe(response => {
-      if (response) {
-        this.highestRatedTeachers = response.data;
-
-      }
-    }, error => {
-      console.log(error);
-
-    });
-
-    //For Teest Without APIs
-    // this.highestRatedTeachers = [
-    //   {
-    //     _id: '1',
-    //     name: 'John Doe',
-    //     email: 'john@example.com',
-    //     password: 'password',
-    //     phone: '1234567890',
-    //     pricePerHour: 20,
-    //     experience: 5,
-    //     Latitude: 51.5074,
-    //     Longitude: -0.1278,
-    //     FieldId: '1',
-    //     pictureUrl:"",
-    //     rating: 4.5,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   },
-    //   {
-    //     _id: '2',
-    //     name: 'Jane Smith',
-    //     email: 'jane@example.com',
-    //     password: 'password',
-    //     phone: '0987654321',
-    //     pricePerHour: 25,
-    //     experience: 3,
-    //     Latitude: 51.5072,
-    //     Longitude: -0.1279,
-    //     FieldId: '2',
-    //     pictureUrl:"",
-    //     rating: 4.2,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   },
-    //   {
-    //     _id: '20',
-    //     name: 'Jane Smith',
-    //     email: 'jane@example.com',
-    //     password: 'password',
-    //     phone: '0987654321',
-    //     pricePerHour: 25,
-    //     experience: 3,
-    //     Latitude: 51.5072,
-    //     Longitude: -0.1279,
-    //     FieldId: '2',
-    //     pictureUrl:"",
-    //     rating: 4.2,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   },
-    //   {
-    //     _id: '15',
-    //     name: 'Jane Smith',
-    //     email: 'jane@example.com',
-    //     password: 'password',
-    //     phone: '0987654321',
-    //     pricePerHour: 25,
-    //     experience: 3,
-    //     Latitude: 51.5072,
-    //     Longitude: -0.1279,
-    //     FieldId: '2',
-    //     pictureUrl:"",
-    //     rating: 4.2,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   },
-    //   {
-    //     _id: '11',
-    //     name: 'Jane Smith',
-    //     email: 'jane@example.com',
-    //     password: 'password',
-    //     phone: '0987654321',
-    //     pricePerHour: 25,
-    //     experience: 3,
-    //     Latitude: 51.5072,
-    //     Longitude: -0.1279,
-    //     FieldId: '2',
-    //     pictureUrl:"",
-    //     rating: 4.2,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   },
-    //   {
-    //     _id: '7',
-    //     name: 'Jane Smith',
-    //     email: 'jane@example.com',
-    //     password: 'password',
-    //     phone: '0987654321',
-    //     pricePerHour: 25,
-    //     experience: 3,
-    //     Latitude: 51.5072,
-    //     Longitude: -0.1279,
-    //     FieldId: '2',
-    //     pictureUrl:"",
-    //     rating: 4.2,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   },
-    //   {
-    //     _id: '10',
-    //     name: 'Jane Smith',
-    //     email: 'jane@example.com',
-    //     password: 'password',
-    //     phone: '0987654321',
-    //     pricePerHour: 25,
-    //     experience: 3,
-    //     Latitude: 51.5072,
-    //     Longitude: -0.1279,
-    //     FieldId: '2',
-    //     pictureUrl:"",
-    //     rating: 4.2,
-    //     registerationDate: new Date(),
-    //     Active: true,
-    //     AcceptanceDate: new Date()
-    //   }
-    //   ];
+        if (response) {
+          this.highestRatedTeachers = response.data.slice(0, 8);
+        }
+      }, error => {
+        console.log(error);
+      });
   }
+  
 
   getActivatedTeachers() {
     this.teacherService.GetActiveTeachers()

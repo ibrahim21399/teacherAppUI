@@ -1,7 +1,4 @@
-img{
-    width: 30vw;
-   
-}
+
 .welcome{
     display:block;
    text-align: center;
@@ -13,3 +10,38 @@ h2{
 h3{
     color: brown;
 }
+/* Map Section */
+#map {
+    width: 100%;
+  }
+  
+  /* Highest Rated Teachers Section */
+  .card {
+    border: none;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .card-price {
+    font-size: 1.5rem;
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .btn-primary.disabled, .btn-primary:disabled {
+    opacity: 0.5;
+  }
