@@ -14,13 +14,16 @@
     <tr *ngFor="let teacher of Teachers">
       <td>{{ teacher.name }}</td>
       <td>{{ teacher.email }}</td>
-      <td>{{ teacher.pricePerHour }}</td>
+      <td>{{ teacher.pricePerHour }} $</td>
       <td>{{ teacher.FieldId?teacher.FieldId.name:"-" }}</td>
-      <td>{{ teacher.registerationDate  }}</td>
+      <td>{{ teacher.registerationDate  |date }}</td>
       <td>{{ teacher.Active ? 'Accepted' : 'Pending' }}</td>
       <td>
 
-        <button *ngIf="!teacher.Active" class="btn btn-primary" (click)="Accept(teacher._id)">Accept</button>
+        <button *ngIf="!teacher.Active" class="btn btn-primary mr-2" (click)="Accept(teacher._id)">Accept</button>
+
+        <button class="btn btn-danger" (click)="Delete(teacher._id)">Delete</button>
+
       </td>
     </tr>
   </tbody>
