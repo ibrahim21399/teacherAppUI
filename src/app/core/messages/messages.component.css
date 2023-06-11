@@ -1,0 +1,28 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.sent {
+  background-color: lightblue;
+  align-self: flex-end;
+}
+
+.received {
+  background-color: lightgray;
+  align-self: flex-start;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.message-form textarea {
+  height: 80px;
+  resize: none;
+  margin-bottom: 10px;
+}
