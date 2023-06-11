@@ -12,13 +12,13 @@ import { FieldService } from 'src/app/services/field.service';
   styleUrls: ['./teachers-list.component.css']
 })
 export class TeachersListComponent  implements OnInit {
-  
+
   teachers: Teacher[] = [];
   fields: Field[] = [];
-  selectedField: any 
+  selectedField: any
   searchText:string="";
   currentPage:number = 1;
-itemsPerPage:number = 6;
+  itemsPerPage:number = 6;
 
   constructor(public auth:AuthService, private http: HttpClient, private teacherService:TeacherService,private fieldService:FieldService) { }
 
