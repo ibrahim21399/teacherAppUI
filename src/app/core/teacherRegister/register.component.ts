@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       fieldId:[this.selectedOption],
-      Latitude:[this.lat],
-      Longitude: [this.lng],
+      lat: [''],
+      lng: [''],
       validator: this.MustMatch('password', 'confirmPassword'),
     });
   }
