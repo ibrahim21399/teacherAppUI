@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route,Router  } from '@angular/router';
 import { Teacher } from 'src/app/Model/Teacher';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +15,7 @@ export class TeacherDetailComponent implements OnInit{
   StudentId: string|any;
   IsEnrollerd:boolean=false;
 
-  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService) { }
+  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadTeacherDetails();
@@ -28,11 +28,14 @@ this.StudentId = localStorage.getItem('userId');
     const id = this.activateRoute.snapshot.params['id'];
     this.teacherService.getTeacherById(id).subscribe(response => {
       if (response) {
+        console.log(this.StudentId)
+        console.log(this.TeacherId)
+        console.log(response)
         this.teacher = response;
         this.teacher = this.teacher[0];
-        if (Array.isArray(this.teacher.studentEnrolled) && this.teacher.studentEnrolled.includes(this.StudentId)) {
+        if (Array.isArray(this.teacher.studentEnrolled) && this.teacher.studentEnrolled.some((student: any) => student._id === this.StudentId)) {
           this.IsEnrollerd = true;
-        }      
+        }    
 
       }
     }, error => {
@@ -42,7 +45,9 @@ this.StudentId = localStorage.getItem('userId');
   Enroll():void{
 this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{this.IsEnrollerd=true})
   }
-  SendMessage():void{
-    
+    SendMessage(): void {
+      this.router.navigate(['/messages', this.StudentId, this.TeacherId]);
+  
+
   }
 }
