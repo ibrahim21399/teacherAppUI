@@ -1,0 +1,43 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h3 class="card-title">{{ student.name }}</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://brightspotcdn.byu.edu/dims4/default/c7ffd9d/2147483647/strip/true/crop/1920x1920+0+0/resize/1200x1200!/quality/90/?url=https%3A%2F%2Fbrigham-young-brightspot.s3.amazonaws.com%2Fd0%2Feb%2F28e53e8148e88de263ca79d1782f%2Fplaceholder.png" class="img-fluid rounded-circle mb-3" alt="student Image">
+            </div>
+            <div class="col-md-8">
+              <p class="card-text"><i class="bi bi-envelope"></i> {{ student.email }}</p>
+              <p class="card-text"><i class="bi bi-phone"></i> {{ student.phone }}</p>
+              <p class="card-text"><i class="bi bi-cash"></i> {{ student.pricePerHour }} / Hour</p>
+              <p class="card-text"><i class="bi bi-award"></i> {{ student.experience }} Years of Experience</p>
+              <p class="card-text"><i class="bi bi-star-fill"></i> {{ student.rating }}</p>
+              <p class="card-text"><i class="bi bi-calendar"></i> {{ student.registerationDate | date }}</p>
+              <p class="card-text"><i class="bi bi-check-circle-fill"></i> {{ student.Active ? 'Active' : 'Inactive' }}</p>
+              <p class="card-text"><i class="bi bi-calendar-check"></i> {{ student.AcceptanceDate | date }}</p>
+            </div>
+          </div>
+          <hr>
+          <h5 class="card-title">Registered Students</h5>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of student.studentEnrolled">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <h6 class="mb-0">{{ item.name }}</h6>
+                  <small class="text-muted"><i class="bi bi-envelope"></i> {{ item.email }}</small>
+                </div>
+                <div class="col-md-4 text-right">
+                  <button class="btn btn-primary btn-sm"><i class="bi bi-eye"></i>Send Message</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
