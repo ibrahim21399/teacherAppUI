@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   Id:any;
   islogin: any;
   authentic:boolean=false;
+
+
+  
   @Input('rating') private rating: number = 3;
   @Input('starCount') private starCount: number = 5;
   @Input('color') public color: string = 'accent';
@@ -71,7 +74,6 @@ export class HomeComponent implements OnInit {
     this.ratingUpdated.emit(rating);
     return false;
   }
-
   showIcon(index:number) {
     if (this.rating >= index + 1) {
       return 'star';
@@ -94,6 +96,8 @@ export class HomeComponent implements OnInit {
   }
 
   initializeMap() {
+    L.Icon.Default.imagePath = "./assets/images/";
+
     this.map = L.map('map').setView([this.userLatitude, this.userLongitude], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
