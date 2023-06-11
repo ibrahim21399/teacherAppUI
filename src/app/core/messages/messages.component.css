@@ -1,28 +1,34 @@
 .message-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 20px;
 }
 
 .sent {
-  background-color: lightblue;
   align-self: flex-end;
+  background-color: #b2d8ff;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
 }
 
 .received {
-  background-color: lightgray;
   align-self: flex-start;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
 }
 
 .message-form {
   display: flex;
-  flex-direction: column;
   margin-top: 20px;
 }
 
 .message-form textarea {
-  height: 80px;
-  resize: none;
-  margin-bottom: 10px;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.message-form button {
+  flex-shrink: 0;
 }

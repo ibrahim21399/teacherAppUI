@@ -1,4 +1,3 @@
-<h2>Messages</h2>
 
 <div class="message-container" *ngIf="messages">
   <div *ngFor="let message of messages" [ngClass]="{'sent': !message.isTeacher, 'received': message.isTeacher}">
@@ -10,3 +9,4 @@
   <textarea  name="message" placeholder="Type your message here"></textarea>
   <button type="submit">Send</button>
 </form>
+

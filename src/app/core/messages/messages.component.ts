@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { message } from 'src/app/Model/message';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-messages',
@@ -14,7 +15,7 @@ export class MessageComponent implements OnInit {
   messages: message[]=[];
   newMessage: message |any;
 
-  constructor(private route: ActivatedRoute, private messageService: MessageService) { }
+  constructor(private route: ActivatedRoute, private messageService: MessageService,private auth:AuthService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
