@@ -3,7 +3,6 @@ import { ActivatedRoute, Route,Router  } from '@angular/router';
 import { Teacher } from 'src/app/Model/Teacher';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { SweetalertService } from 'src/app/services/general/sweetalert.service';
 
 @Component({
   selector: 'app-teacher-detail',
@@ -15,21 +14,16 @@ export class TeacherDetailComponent implements OnInit{
   TeacherId: string="";
   StudentId: string|any;
   IsEnrollerd:boolean=false;
-  Role:any;
-
-  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService
-    ,private _sweetalertService: SweetalertService,
-    ) { 
-      this.loadTeacherDetails();
   @Output() ratingSubmitted = new EventEmitter<number>();
 
-  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService) { }
+  stars: number[] = [0, 0, 0, 0, 0];
+  selectedRating: number=0;
+  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadTeacherDetails();
-    console.log(this.IsEnrollerd);
     this.TeacherId=this.activateRoute.snapshot.params['id'];
-this.StudentId = localStorage.getItem('userId');
+    this.StudentId = localStorage.getItem('userId');
 
   }
 
@@ -42,14 +36,9 @@ this.StudentId = localStorage.getItem('userId');
         console.log(response)
         this.teacher = response;
         this.teacher = this.teacher[0];
-        console.log(this.teacher);
-        if (Array.isArray(this.teacher.studentEnrolled)){
-          for(var i=0;i < this.teacher.studentEnrolled.length ; i++)
-            {
-            if(this.teacher.studentEnrolled[i]._id == this.StudentId)this.IsEnrollerd = true;
-           }
+        if (Array.isArray(this.teacher.studentEnrolled) && this.teacher.studentEnrolled.some((student: any) => student._id === this.StudentId)) {
+          this.IsEnrollerd = true;
         }
-
 
       }
     }, error => {
@@ -57,14 +46,7 @@ this.StudentId = localStorage.getItem('userId');
     });
   }
   Enroll():void{
-this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{
-  this.IsEnrollerd=true;
-  console.log(a);
-  this._sweetalertService.RunAlert(a.data.message,true);
-},error=>{
-  this._sweetalertService.RunAlert(error.error.message,false);
-
-})
+this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{this.IsEnrollerd=true})
   }
   SendMessage(): void {
     this.router.navigate(['/messages', this.StudentId, this.TeacherId]);
@@ -82,3 +64,6 @@ this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{
   submitRating(): void {
     if (this.selectedRating) {
       this.ratingSubmitted.emit(this.selectedRating);
+    }
+  }
+}
