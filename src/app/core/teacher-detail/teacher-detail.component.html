@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title mb-4">{{ teacher.name }}</h5>
+          <h4 class="card-title mb-4">{{ teacher.name }}</h4>
           <p class="card-text mb-2">Email: {{ teacher.email }}</p>
           <p class="card-text mb-2">Phone: {{ teacher.phone }}</p>
           <p class="card-text mb-2">Price per Hour: {{ teacher.pricePerHour }} /hour</p>
@@ -21,7 +21,7 @@
           </div> -->
 
         <div *ngIf="!IsRated && IsEnrollerd">
-
+<h5>Rate Your Teacher :</h5>
           <ng-container *ngFor="let rateVal of [1, 2, 3, 4, 5]">
             <input (click)="rateProduct(rateVal)" [id]="'star'+rateVal" [value]="rateVal-0.5" name="rating" type="radio" />
             <label class="full" [for]="'star'+rateVal"></label>
@@ -38,7 +38,11 @@
             </div>
           </div>
         </div>
+        <div *ngIf="IsRated && IsEnrollerd">
+          <p style="color: Red;">Thank You!</p>
+
         </div>
+      </div>
       </div>
     </div>
   </div>
