@@ -30,6 +30,7 @@ import { FilterPipe } from '../Filters/filter.pipe';
 import { RatingComponent } from './rating/rating.component';
 import { MessageComponent } from './messages/messages.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 
 
@@ -54,7 +55,8 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
     FilterPipe,
     TeachersListComponent,
     MessageComponent,
-    StudentProfileComponent
+    StudentProfileComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,

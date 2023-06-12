@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component,  OnInit,  } from '@angular/core';
+import { Component,  OnChanges,  OnInit, SimpleChanges,  } from '@angular/core';
 import { Field } from 'src/app/Model/Field';
 import { Teacher } from 'src/app/Model/Teacher';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
@@ -11,14 +11,16 @@ import { FieldService } from 'src/app/services/field.service';
   templateUrl: './teachers-list.component.html',
   styleUrls: ['./teachers-list.component.css']
 })
-export class TeachersListComponent  implements OnInit {
+export class TeachersListComponent  implements OnInit ,OnChanges {
 
   teachers: Teacher[] = [];
+  filteredTeachers: Teacher[] = [];
+
   fields: Field[] = [];
   selectedField: any
   searchText:string="";
-  currentPage:number = 1;
-  itemsPerPage:number = 6;
+  Rate:any;
+  Years:any;
 
   constructor(public auth:AuthService, private http: HttpClient, private teacherService:TeacherService,private fieldService:FieldService) { }
 
@@ -26,12 +28,15 @@ export class TeachersListComponent  implements OnInit {
    this.getAllTeachers();
    this.getFields();
  }
+ ngOnChanges(): void {
+ }
  getAllTeachers() {
   this.teacherService.GetActiveTeachers()
     .subscribe(response => {
     if (response) {
       console.log(response)
       this.teachers = response.data;
+      this.filteredTeachers=response.data;
     }
   }, error => {
     console.log(error);
@@ -46,28 +51,32 @@ getFields(): void {
 }
 
 filterTeachers() {
-  let filteredTeachers = this.teachers;
+  console.log("d5l")
+  this.filteredTeachers = this.teachers;
   if (this.searchText) {
-    filteredTeachers = filteredTeachers.filter(teacher => teacher.name.toLowerCase().includes(this.searchText.toLowerCase()));
+    console.log("1");
+
+    this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.name.toLowerCase().includes(this.searchText.toLowerCase()));
+    console.log(this.filteredTeachers);
   }
   if (this.selectedField) {
-    filteredTeachers = filteredTeachers.filter(teacher => teacher.FieldId === this.selectedField);
-  }
-  return filteredTeachers;
-}
-getTotalPages() {
-  return Math.ceil(this.teachers.length / this.itemsPerPage);
-}
-getPages() {
-  const totalPages = this.getTotalPages();
-  const pages = [];
+    console.log("2");
 
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
+    this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.FieldId === this.selectedField);
+  }
+  if(this.Rate){
+    this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.rating === this.Rate);
+
+  }
+  if(this.Years){
+    this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.experience === this.Years);
+
   }
 
-  return pages;
+  return this.filteredTeachers;
 }
+
+
 
 
 }

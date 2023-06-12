@@ -21,6 +21,8 @@
 
         <button *ngIf="student.Active" class="btn btn-danger" (click)="Block(student._id)">Block</button>
         <button *ngIf="!student.Active" class="btn btn-primary" (click)="Active(student._id)">Active</button>
+        <button class="btn btn-danger mx-2" (click)="Delete(student._id)">Delete</button>
+
       </td>
     </tr>
   </tbody>

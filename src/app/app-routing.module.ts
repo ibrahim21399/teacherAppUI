@@ -13,6 +13,7 @@ import { TeachersListComponent } from './core/teachers-list/teachers-list.compon
 import { TeacherDetailComponent } from './core/teacher-detail/teacher-detail.component';
 import { TeacherProfileComponent } from './core/teacher-profile/teacher-profile.component';
 import { MessageComponent } from './core/messages/messages.component';
+import { AdminComponent } from './core/admin/admin/admin.component';
 
 const routes: Routes = [
   {path:"login",component: LoginComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:"students",component: ActiveStudentsComponent},
   {path:"PendingTeachers",component: PendingTeachersComponent},
   {path:"TeachersList",component: TeachersListComponent},
+  {path:"Admins",component: AdminComponent},
 
   {path: "teacherDetail/:id", component: TeacherDetailComponent},
   {path: "teacherProfile/:id", component: TeacherProfileComponent},

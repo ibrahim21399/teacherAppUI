@@ -45,9 +45,9 @@ export class TeacherService {
     return this._httpClient.get<Teacher>(`${this._Teachers}${userId}`)
   }
 
-  Enroll(teacherId: string, studentId: string): Observable<Teacher> {
+  Enroll(teacherId: string, studentId: string): Observable<ServiceResponse<any>> {
     const enrollment = { TeacherId: teacherId, StudentId: studentId };
-    return this._httpClient.post<Teacher>(`${this._enrollments}`, enrollment);
+    return this._httpClient.post<ServiceResponse<any>>(`${this._enrollments}`, enrollment);
   }
 
 }

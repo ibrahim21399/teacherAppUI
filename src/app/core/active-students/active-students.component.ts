@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/Model/Student';
 import { StudentService } from 'src/app/services/Student/student.service';
+import { SweetalertService } from 'src/app/services/general/sweetalert.service';
 
 @Component({
   selector: 'app-active-students',
@@ -9,7 +10,7 @@ import { StudentService } from 'src/app/services/Student/student.service';
 })
 export class ActiveStudentsComponent implements OnInit {
   students: Student[]=[];
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService, private _sweetalertService: SweetalertService) { }
 
   ngOnInit(): void {
     this.getAllActive();
@@ -35,5 +36,12 @@ this.studentService.Block(id).subscribe(a=>{
       this.getAllActive();
     })
 }
+Delete(id:string):void{
+  this.studentService.Delete(id).subscribe(a=>{
+    console.log(a);
+    this._sweetalertService.RunAlert(a.message,true);
 
+    this.getAllActive();
+  })
+}
 }

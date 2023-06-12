@@ -13,9 +13,10 @@
             <div class="col-md-8">
               <p class="card-text"><i class="bi bi-envelope"></i> {{ teacher.email }}</p>
               <p class="card-text"><i class="bi bi-phone"></i> {{ teacher.phone }}</p>
-              <p class="card-text"><i class="bi bi-cash"></i> {{ teacher.pricePerHour }} / Hour</p>
+              <p class="card-text"><i class="bi bi-cash"></i> {{ teacher.pricePerHour }} $/ Hour</p>
               <p class="card-text"><i class="bi bi-award"></i> {{ teacher.experience }} Years of Experience</p>
-              <p class="card-text"><i class="bi bi-star-fill"></i> {{ teacher.rating }}</p>
+              <p class="card-text">
+                <app-rating [rate]="teacher.rating"></app-rating> </p>
               <p class="card-text"><i class="bi bi-calendar"></i> {{ teacher.registerationDate | date }}</p>
               <p class="card-text"><i class="bi bi-check-circle-fill"></i> {{ teacher.Active ? 'Active' : 'Inactive' }}</p>
               <p class="card-text"><i class="bi bi-calendar-check"></i> {{ teacher.AcceptanceDate | date }}</p>

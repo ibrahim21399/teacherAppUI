@@ -1,0 +1,34 @@
+<div class="m-3 ">
+    <h2 class="text-center text-white">Admin List</h2>
+  
+  <div class="form col-sm-6  mx-auto">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Name" #name required /><br>
+      <input type="email" class="form-control" placeholder="Email" #email required /><br>
+      <input type="password" class="form-control " placeholder="" #password  required/><br>
+
+
+      <div class="form control mx-2">
+        <button class="btn btn-primary" (click)="add(name.value,email.value,password.value); name.value=''; email.value='';password.value=''">create</button>
+      </div>
+    </div>
+  </div>
+  <div class="m-3">
+    <table class="table bg-white">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let field of Admins" (click)="onSelect(field)" [class.selected]="field === selectedAdmin">
+          <td class="text-center">{{field.name}}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-danger" (click)="delete(field)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>

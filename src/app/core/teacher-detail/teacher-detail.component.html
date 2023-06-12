@@ -9,10 +9,11 @@
           <h5 class="card-title mb-4">{{ teacher.name }}</h5>
           <p class="card-text mb-2">Email: {{ teacher.email }}</p>
           <p class="card-text mb-2">Phone: {{ teacher.phone }}</p>
-          <p class="card-text mb-2">Price per Hour: {{ teacher.pricePerHour }}</p>
+          <p class="card-text mb-2">Price: {{ teacher.pricePerHour }}$ /hour </p>
           <p class="card-text mb-2">Field: {{ teacher.FieldId ? teacher.FieldId.name : "-" }}</p>
-          <p class="card-text mb-2">Rating: {{ teacher.rating }}</p>
-          <button *ngIf="!IsEnrollerd" class="btn btn-primary mt-4" (click)="Enroll()">Enroll</button>
+          <p class="card-text mb-2">            <app-rating [rate]="teacher.rating"></app-rating>
+          </p>
+          <button *ngIf="!IsEnrollerd && Role=='student'" class="btn btn-primary mt-4" (click)="Enroll()">Enroll</button>
           <button class="btn btn-primary mt-4" [disabled]="!IsEnrollerd" (click)="SendMessage()">Send Message</button>
           <label *ngIf="!IsEnrollerd" class="text-danger d-block">Note : Just Enrolled Student Can Send Message</label>
         </div>

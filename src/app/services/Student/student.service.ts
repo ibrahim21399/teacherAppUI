@@ -31,6 +31,9 @@ export class StudentService {
   Active(id:string): Observable<Student> {
     return this.http.get<Student>(`${this._Active}${id}`);
   }
+  Delete(id:string): Observable<ServiceResponse<boolean>> {
+    return this.http.delete<ServiceResponse<boolean>>(`${this._students}${id}`);
+  }
   getStudentById(userId:string):Observable<Student>{
     return this.http.get<Student>(`${this._StudentById}${userId}`);
   }
