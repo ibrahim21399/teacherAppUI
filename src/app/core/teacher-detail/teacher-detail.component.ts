@@ -3,6 +3,7 @@ import { ActivatedRoute, Route,Router  } from '@angular/router';
 import { Teacher } from 'src/app/Model/Teacher';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { SweetalertService } from 'src/app/services/general/sweetalert.service';
 
 @Component({
   selector: 'app-teacher-detail',
@@ -14,16 +15,24 @@ export class TeacherDetailComponent implements OnInit{
   TeacherId: string="";
   StudentId: string|any;
   IsEnrollerd:boolean=false;
+  Role:any;
   @Output() ratingSubmitted = new EventEmitter<number>();
 
   stars: number[] = [0, 0, 0, 0, 0];
   selectedRating: number=0;
-  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService, private router: Router) { }
+  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService,
+    private _sweetalertService: SweetalertService,private router: Router) { 
+      this.loadTeacherDetails();
+      this.TeacherId=this.activateRoute.snapshot.params['id'];
+      this.StudentId = localStorage.getItem('userId');
+      this.Role = localStorage.getItem('Role');
+    }
 
   ngOnInit(): void {
     this.loadTeacherDetails();
     this.TeacherId=this.activateRoute.snapshot.params['id'];
     this.StudentId = localStorage.getItem('userId');
+    this.Role = localStorage.getItem('Role');
 
   }
 
@@ -46,8 +55,15 @@ export class TeacherDetailComponent implements OnInit{
     });
   }
   Enroll():void{
-this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{this.IsEnrollerd=true})
-  }
+    this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{
+      this.IsEnrollerd=true;
+      console.log(a);
+      this._sweetalertService.RunAlert(a.data.message,true);
+    },error=>{
+      this._sweetalertService.RunAlert(error.error.message,false);
+    
+    });
+      }
   SendMessage(): void {
     this.router.navigate(['/messages', this.StudentId, this.TeacherId]);
   }

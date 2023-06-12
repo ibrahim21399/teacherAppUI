@@ -41,10 +41,10 @@
                 type="text"
                 class="form-control"
                 placeholder="Enter phone number"
-                formControlName="Phone"
+                formControlName="phone"
                 [ngClass]="{
-                  'valid' :signupForm.get('Phone')?.touched && signupForm.get('Phone')?.valid,
-                  'invalid' : form['Phone'].touched &&form['Phone'].invalid}"
+                  'valid' :signupForm.get('phone')?.touched && signupForm.get('phone')?.valid,
+                  'invalid' : form['phone'].touched &&form['phone'].invalid}"
               />
               <input type="hidden" class="form-control"  formControlName="Latitude"  [(ngModel)]="Latitude">
               <input type="hidden" class="form-control" formControlName="Longitude"  [(ngModel)]="Longitude">

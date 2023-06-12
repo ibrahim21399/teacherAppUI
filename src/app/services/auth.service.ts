@@ -45,7 +45,7 @@ export class AuthService {
       if (this.decodedToken.role=="teacher")
       this.router.navigateByUrl(`/teacherProfile/${this.decodedToken._id}`)
       else if(this.decodedToken.role=="admin")
-      this.router.navigateByUrl(`/pendingTeachers/`)
+      this.router.navigateByUrl(`/PendingTeachers`)
       else
         this.router.navigateByUrl(`/`)
     },error => {

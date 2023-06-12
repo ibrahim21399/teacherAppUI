@@ -27,6 +27,7 @@ export class PendingTeachersComponent implements OnInit {
     this.teacherService.UpdateActivationOfTeacher(id).subscribe(a=>{
       this._sweetalertService.RunAlert(a.message,true);
       this.getAllPending();
+      
     })
 }
 
