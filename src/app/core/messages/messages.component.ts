@@ -86,5 +86,7 @@ console.log(response)
       console.log(error);
     });
   }
-
+  isUserArray(): boolean {
+    return Array.isArray(this.user);
+  }
 }
