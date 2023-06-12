@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
   }
   
   onSubmit() {
+    console.log(this.signupForm.value)
     if (this.signupForm.invalid) {
       this._sweetalertService.RunAlert(
         'form not valid sholud check all inputs',
