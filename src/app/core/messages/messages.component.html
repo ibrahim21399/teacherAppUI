@@ -1,13 +1,17 @@
 
+<div class="col-sm-6  mx-auto">
+
 <h1 class="text-white" *ngIf="isUserArray()">Message with {{ user[0]?.name }} </h1>
     <h1 class="text-white" *ngIf="!isUserArray()">Message with {{ user?.name }} </h1><div class="message-container" *ngIf="messages">
+
   <div *ngFor="let message of messages"  [ngClass]="{'sent': ((!message.isTeacher && this.myRole==='student') || (message.isTeacher && this.myRole==='teacher')), 'received': ((message.isTeacher && this.myRole==='student') || (!message.isTeacher && this.myRole==='teacher'))}">
     <p>{{ message?.message }}</p>
   </div>
 </div>
 
 <form class="message-form" (submit)="sendMessage()">
-  <textarea  name="message" placeholder="Type your message here" [(ngModel)]="newMessage.message" ></textarea>
-  <button type="submit" class="btn-primary">Send</button>
+  <textarea  name="message" placeholder="Type your message here" [(ngModel)]="newMessage.message"></textarea>
+  <button class="btn btn-success" type="submit">Send</button>
 </form>
+</div>
 

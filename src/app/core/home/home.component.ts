@@ -112,6 +112,7 @@ export class HomeComponent implements OnInit {
 
     // Place markers for nearby teachers
     this.teachers.forEach((teacher) => {
+      console.log(teacher);
       if(teacher.Latitude != undefined){
       L.marker([teacher.Latitude, teacher.Longitude])
         .addTo(this.map)

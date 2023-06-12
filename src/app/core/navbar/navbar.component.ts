@@ -36,11 +36,17 @@ this.login.getname().subscribe(res=>{
 
 
 });
+this.login.getRole().subscribe(res=>{
+  this.role = res;
+
+
+});
   }
   logout(){
     this.login.logout();
     this.islogin =false;
     this.login.sendIsLogin(false);
+    this.login.sendRole('');
     this.ngOnInit();
 
   }
