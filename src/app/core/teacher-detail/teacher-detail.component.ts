@@ -17,6 +17,8 @@ export class TeacherDetailComponent implements OnInit{
   IsEnrollerd:boolean=false;
   Role:any;
   starWidth: number = 0;
+  IsRated:boolean=false;
+
 
   @Output() ratingSubmitted = new EventEmitter<number>();
 
@@ -70,9 +72,7 @@ export class TeacherDetailComponent implements OnInit{
     this.router.navigate(['/messages', this.StudentId, this.TeacherId]);
   }
 
-  RateTeacher(): void {
-    this.router.navigate(['/RateTeacher', this.StudentId, this.TeacherId]);
-  }
+
 
   setRating(rating: number): void {
     this.selectedRating = rating;
@@ -88,5 +88,9 @@ export class TeacherDetailComponent implements OnInit{
   rateProduct(rateValue: number) {
     console.log(rateValue);
     this.starWidth = rateValue * 75 / 5;
+    this.teacherService.rate(this.TeacherId,rateValue).subscribe(a=>{this.IsRated=true;
+      this.loadTeacherDetails();
+    })
+
   }
 }

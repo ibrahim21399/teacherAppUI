@@ -20,6 +20,7 @@
             <span *ngFor="let star of stars" class="fa" [ngClass]="{'fa-star': star === 1, 'fa-star-half-alt': star === 0.5, 'fa-star-o': star === 0}" (click)="setRating(star)"></span>
           </div> -->
 
+        <div *ngIf="!IsRated && IsEnrollerd">
 
           <ng-container *ngFor="let rateVal of [1, 2, 3, 4, 5]">
             <input (click)="rateProduct(rateVal)" [id]="'star'+rateVal" [value]="rateVal-0.5" name="rating" type="radio" />
@@ -36,6 +37,7 @@
               <span class="fa fa-star"style="color: yellow;"></span>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

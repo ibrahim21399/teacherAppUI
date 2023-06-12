@@ -16,6 +16,7 @@ export class TeacherService {
   private _apiGetAllNotAcceptedTeachers=`${Url}notactiveteachers`;
   private _activeteachers=`${Url}activeteachers/`;
   private _enrollments = `${Url}enroll/`;
+  private _rate = `${Url}rate/`;
 
 
 
@@ -50,4 +51,7 @@ export class TeacherService {
     return this._httpClient.post<ServiceResponse<any>>(`${this._enrollments}`, enrollment);
   }
 
+  rate(teacherId: string,rateVal:Number): Observable<ServiceResponse<any>> {
+    return this._httpClient.get<ServiceResponse<any>>(`${this._rate}${teacherId}/${rateVal}`);
+  }
 }
