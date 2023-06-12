@@ -17,7 +17,7 @@ export class TeachersListComponent  implements OnInit ,OnChanges {
   filteredTeachers: Teacher[] = [];
 
   fields: Field[] = [];
-  selectedField: any
+  selectedField: any;
   searchText:string="";
   Rate:any;
   Years:any;
@@ -51,7 +51,6 @@ getFields(): void {
 }
 
 filterTeachers() {
-  console.log("d5l")
   this.filteredTeachers = this.teachers;
   if (this.searchText) {
     console.log("1");
@@ -60,9 +59,10 @@ filterTeachers() {
     console.log(this.filteredTeachers);
   }
   if (this.selectedField) {
-    console.log("2");
+    console.log(this.selectedField);
 
-    this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.FieldId === this.selectedField);
+
+    this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.FieldId._id === this.selectedField);
   }
   if(this.Rate){
     this.filteredTeachers = this.filteredTeachers.filter(teacher => teacher.rating === this.Rate);

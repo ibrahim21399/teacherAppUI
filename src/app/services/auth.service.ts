@@ -22,6 +22,8 @@ export class AuthService {
   decodedToken:any; 
   private IsLogin = new Subject<any>();
   private name = new Subject<any>();
+  private Role = new Subject<any>();
+
 
   constructor(private http: HttpClient,private router:Router,private _sweetalertService:SweetalertService) {
 
@@ -39,6 +41,7 @@ export class AuthService {
       this.isloggedin = true;
       this.IsLogin.next(true);
       this.name.next(this.decodedToken.name);
+      this.Role.next(this.decodedToken.role);
       this.userId = this.decodedToken._id;
 
       console.log(this.decodedToken.role)
@@ -83,5 +86,11 @@ sendname(name:string =""){
 }
 getname(){
   return this.name.asObservable();
+}
+sendRole(role:string =""){
+  this.Role.next(role);
+}
+getRole(){
+  return this.Role.asObservable();
 }
 }

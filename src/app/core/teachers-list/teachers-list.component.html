@@ -5,8 +5,8 @@
     </div>
     <div class="col-md-3 mb-3 mb-md-0">
       <select class="form-control"placeholder="Field"  [(ngModel)]="selectedField"  (ngModelChange)="filterTeachers()" >
-        <option value="" selected>All fields</option>
-        <option *ngFor="let field of fields" [value]="field">{{ field.name }}</option>
+        <option value="" >All fields</option>
+        <option *ngFor="let field of fields" [value]="field._id">{{ field.name }}</option>
       </select>
     </div>
     <div class="col-md-3 mb-3 mb-md-0">
