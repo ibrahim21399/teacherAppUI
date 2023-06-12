@@ -14,7 +14,7 @@ export class StudentService {
   private _students=`${Url}students/`;
   private _Block=`${Url}BlockStudent/`;
   private _Active=`${Url}ActiveStudent/`;
-  private _StudentById=`${Url}StudentById/`;
+  private _StudentById=`${Url}students/`;
 
   constructor(private http:HttpClient) { }
   StudentRegiser(student:Student):Observable<ServiceResponse<boolean>>{
