@@ -1,5 +1,5 @@
-import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component,EventEmitter,OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Route,Router  } from '@angular/router';
 import { Teacher } from 'src/app/Model/Teacher';
 import { TeacherService } from 'src/app/services/Teacher/teacher.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -21,18 +21,15 @@ export class TeacherDetailComponent implements OnInit{
     ,private _sweetalertService: SweetalertService,
     ) { 
       this.loadTeacherDetails();
+  @Output() ratingSubmitted = new EventEmitter<number>();
 
-    this.TeacherId=this.activateRoute.snapshot.params['id'];
-    this.StudentId = localStorage.getItem('userId');
-    this.Role =localStorage.getItem('Role');
-  }
+  constructor(private teacherService:TeacherService,  private activateRoute:ActivatedRoute,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.loadTeacherDetails();
     console.log(this.IsEnrollerd);
     this.TeacherId=this.activateRoute.snapshot.params['id'];
 this.StudentId = localStorage.getItem('userId');
-this.Role =localStorage.getItem('Role');
 
   }
 
@@ -40,6 +37,9 @@ this.Role =localStorage.getItem('Role');
     const id = this.activateRoute.snapshot.params['id'];
     this.teacherService.getTeacherById(id).subscribe(response => {
       if (response) {
+        console.log(this.StudentId)
+        console.log(this.TeacherId)
+        console.log(response)
         this.teacher = response;
         this.teacher = this.teacher[0];
         console.log(this.teacher);
@@ -66,7 +66,19 @@ this.teacherService.Enroll(this.TeacherId,this.StudentId).subscribe(a=>{
 
 })
   }
-  SendMessage():void{
-    
+  SendMessage(): void {
+    this.router.navigate(['/messages', this.StudentId, this.TeacherId]);
   }
-}
+
+  RateTeacher(): void {
+    this.router.navigate(['/RateTeacher', this.StudentId, this.TeacherId]);
+  }
+
+  setRating(rating: number): void {
+    this.selectedRating = rating;
+    this.stars = this.stars.map((star, index) => index < rating ? 1 : 0);
+  }
+
+  submitRating(): void {
+    if (this.selectedRating) {
+      this.ratingSubmitted.emit(this.selectedRating);

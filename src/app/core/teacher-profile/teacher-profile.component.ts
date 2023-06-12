@@ -22,8 +22,7 @@ export class TeacherProfileComponent {
         if (response) {
           this.teacher = response;
           this.teacher = this.teacher[0];
-
-
+          this.TeacherId=id;
         }
       }, error => {
         console.log(error);

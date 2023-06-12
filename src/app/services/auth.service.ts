@@ -1,9 +1,9 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SweetalertService } from './general/sweetalert.service';
 import jwtDecode from 'jwt-decode';
 import { Subject } from 'rxjs';
+import { SweetalertService } from './general/sweetalert.service';
 
 
 
@@ -23,12 +23,13 @@ export class AuthService {
   private IsLogin = new Subject<any>();
   private name = new Subject<any>();
 
-  constructor(private http: HttpClient,private router:Router,private _sweetalertService: SweetalertService) {
+  constructor(private http: HttpClient,private router:Router,private _sweetalertService:SweetalertService) {
 
    }
 
   Login(email: string, password: string) {
     this.http.post<any>(this.url + "login", { email: email, password: password }).subscribe( res => {
+      console.log(res)
       localStorage.setItem("jwt_token", res.token)
       this.decodedToken = jwtDecode<any>(res.token);
       localStorage.setItem("name", this.decodedToken.name);
@@ -44,11 +45,11 @@ export class AuthService {
       if (this.decodedToken.role=="teacher")
       this.router.navigateByUrl(`/teacherProfile/${this.decodedToken._id}`)
       else if(this.decodedToken.role=="admin")
-      this.router.navigateByUrl(`/PendingTeachers`)
+      this.router.navigateByUrl(`/pendingTeachers/`)
       else
         this.router.navigateByUrl(`/`)
     },error => {
-      this._sweetalertService.RunAlert(error.error.message,false);
+    this._sweetalertService.RunAlert(error.error.message,false);
     })
   }
 logout(){

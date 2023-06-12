@@ -58,8 +58,8 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+  
   onSubmit() {
-    console.log(this.signupForm.value);
     if (this.signupForm.invalid) {
       this._sweetalertService.RunAlert(
         'form not valid sholud check all inputs',
@@ -67,16 +67,24 @@ export class RegisterComponent implements OnInit {
       );
       return;
     }
-    this.loading = true;
-    this._teacherService.TeacherRegiser(this.signupForm.value).subscribe((res) => {
-        this._sweetalertService.RunAlert(res.message, true);
 
-    },(error)=>{
-
-      this._sweetalertService.RunAlert(error.error.message, false);
-
+    // Set the latitude and longitude values in the form data
+    this.signupForm.patchValue({
+      Latitude: this.Latitude,
+      Longitude: this.Longitude
     });
+
+    this.loading = true;
+    this._teacherService.TeacherRegiser(this.signupForm.value).subscribe(
+      (res) => {
+        this._sweetalertService.RunAlert(res.message, true);
+      },
+      (error) => {
+        this._sweetalertService.RunAlert(error.error.message, false);
+      }
+    );
   }
+
   MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
