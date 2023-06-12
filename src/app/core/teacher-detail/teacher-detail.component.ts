@@ -16,6 +16,8 @@ export class TeacherDetailComponent implements OnInit{
   StudentId: string|any;
   IsEnrollerd:boolean=false;
   Role:any;
+  starWidth: number = 0;
+
   @Output() ratingSubmitted = new EventEmitter<number>();
 
   stars: number[] = [0, 0, 0, 0, 0];
@@ -81,5 +83,10 @@ export class TeacherDetailComponent implements OnInit{
     if (this.selectedRating) {
       this.ratingSubmitted.emit(this.selectedRating);
     }
+  }
+
+  rateProduct(rateValue: number) {
+    console.log(rateValue);
+    this.starWidth = rateValue * 75 / 5;
   }
 }

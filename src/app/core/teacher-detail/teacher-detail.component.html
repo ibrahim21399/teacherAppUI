@@ -16,10 +16,26 @@
           <button *ngIf="!IsEnrollerd&& Role=='student'" class="btn btn-primary mt-4" (click)="Enroll()">Enroll</button>
           <button class="btn btn-primary mt-4" [disabled]="!IsEnrollerd" (click)="SendMessage()">Send Message</button>
           <label *ngIf="!IsEnrollerd " class="text-danger d-block">Note : Just Enrolled Student Can Send Message</label>
-          <div class="rating">
+          <!-- <div class="rating">
             <span *ngFor="let star of stars" class="fa" [ngClass]="{'fa-star': star === 1, 'fa-star-half-alt': star === 0.5, 'fa-star-o': star === 0}" (click)="setRating(star)"></span>
-          </div>
+          </div> -->
 
+
+          <ng-container *ngFor="let rateVal of [1, 2, 3, 4, 5]">
+            <input (click)="rateProduct(rateVal)" [id]="'star'+rateVal" [value]="rateVal-0.5" name="rating" type="radio" />
+            <label class="full" [for]="'star'+rateVal"></label>
+          </ng-container>
+
+          <div class="crop"
+               [style.width.px]="starWidth">
+            <div style="width: 75px">
+              <span class="fa fa-star" style="color: yellow;"></span>
+              <span class="fa fa-star"style="color: yellow;"></span>
+              <span class="fa fa-star"style="color: yellow;"></span>
+              <span class="fa fa-star"style="color: yellow;"></span>
+              <span class="fa fa-star"style="color: yellow;"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
